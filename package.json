@@ -1,0 +1,43 @@
+{
+  "name": "btstrp-template",
+  "packageManager": "yarn@4.5.0",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write \"./**/*.ts\" \"./**/*.tsx\"",
+    "codegen": "graphql-codegen",
+    "codegen-rest": "yarn openapi-generator-cli generate -g typescript-axios -i http://localhost:4000/api-json -o ./generated/rest-api -c ./openapiConfig.yml  --skip-validate-spec"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@privy-io/react-auth": "^1.83.0",
+    "@rollbar/react": "^0.12.0-beta",
+    "axios": "^1.7.7",
+    "graphql": "^16.9.0",
+    "next": "14.2.8",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.0",
+    "rollbar": "^2.26.4",
+    "swr": "^2.2.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/typescript-graphql-request": "^6.2.0",
+    "@openapitools/openapi-generator-cli": "^2.13.5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.8",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
+  }
+}
