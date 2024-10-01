@@ -4460,6 +4460,7 @@ __metadata:
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-prettier: "npm:^5.2.1"
     graphql: "npm:^16.9.0"
+    material-icons: "npm:^1.13.12"
     next: "npm:14.2.8"
     prettier: "npm:^3.3.3"
     react: "npm:^18"
@@ -8192,6 +8193,13 @@ __metadata:
   version: 0.2.2
   resolution: "map-cache@npm:0.2.2"
   checksum: 10c0/05e3eb005c1b80b9f949ca007687640e8c5d0fc88dc45c3c3ab4902a3bec79d66a58f3e3b04d6985d90cd267c629c7b46c977e9c34433e8c11ecfcbb9f0fa290
+  languageName: node
+  linkType: hard
+
+"material-icons@npm:^1.13.12":
+  version: 1.13.12
+  resolution: "material-icons@npm:1.13.12"
+  checksum: 10c0/77517592a7048bbb1fc2b00d008c795c9560ef42c911cf66afc09ce3d319ce1f659d5d993c961015bbb3dce0305bc5fcc19df32a8a5885f39b4203f6bc35ad47
   languageName: node
   linkType: hard
 

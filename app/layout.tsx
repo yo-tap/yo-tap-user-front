@@ -1,10 +1,11 @@
 // app/layout.tsx
 import { Providers } from '@/providers/providers'
 import { ColorSchemeScript, Container } from '@mantine/core'
-import '@mantine/core/styles.css'
-import '@/styles/globals.scss'
 import React from 'react'
 import { applicationProperties } from '@/constants/applicationProperties'
+import '@mantine/core/styles.css'
+import '@/styles/globals.scss'
+import 'material-icons/iconfont/material-icons.css'
 
 export const metadata = {
   title: 'My Next.js App',
