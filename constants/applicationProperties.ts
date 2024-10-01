@@ -10,4 +10,5 @@ export const applicationProperties = {
   API_REST_URL:
     process.env.NEXT_PUBLIC_API_REST_URL || 'http://localhost:4000/',
   PRIVY_APP_ID: process.env.NEXT_PUBLIC_PRIVY_APP_ID || '',
+  CONTENT_MAX_WIDTH: 410,
 }

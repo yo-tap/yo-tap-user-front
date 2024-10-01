@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import EffectTinder from './effect-tinder.esm.js'
@@ -71,4 +72,4 @@ const Component = () => {
   )
 }
 
-export { Component as TinderUI }
+export { Component as CardSwiper }
