@@ -14,6 +14,10 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
+    "@mantine/core": "^7.13.1",
+    "@mantine/form": "^7.13.1",
+    "@mantine/hooks": "^7.13.1",
+    "@mantine/modals": "^7.13.1",
     "@privy-io/react-auth": "^1.83.0",
     "@rollbar/react": "^0.12.0-beta",
     "axios": "^1.7.7",

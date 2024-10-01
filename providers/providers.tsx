@@ -5,6 +5,8 @@ import GoogleAnalyticsV4, {
   googleAnalyticsId,
 } from '@/components/GoogleAnalyticsV4'
 import { applicationProperties } from '@/constants/applicationProperties'
+import { mantineTheme } from '@/theme/mantineTheme'
+import { MantineProvider } from '@mantine/core'
 import { PrivyProvider } from '@privy-io/react-auth'
 import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react' // Provider imports 'rollbar'
 
@@ -44,7 +46,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
             },
           }}
         >
-          {children}
+          <MantineProvider theme={mantineTheme}>{children}</MantineProvider>
         </PrivyProvider>
       </ErrorBoundary>
     </RollbarProvider>
