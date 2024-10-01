@@ -1,3 +1,4 @@
+import { TinderUI } from '@/components/TinderSwiper'
 import { registeredLoginUserRootUrl } from '@/helpers/url.helper'
 import { useAppAuthentication } from '@/hooks/useAppAuthentication'
 import Link from 'next/link'
@@ -12,6 +13,9 @@ export default function Home() {
   return (
     <>
       <div>Top</div>
+      <div style={{ maxWidth: 420 }}>
+        <TinderUI />
+      </div>
 
       <div>
         {loginned ? (
