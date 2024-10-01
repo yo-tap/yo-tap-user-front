@@ -1,11 +1,11 @@
 // app/layout.tsx
 import { Providers } from '@/providers/providers'
-import { ColorSchemeScript, Container } from '@mantine/core'
-import React from 'react'
-import { applicationProperties } from '@/constants/applicationProperties'
-import '@mantine/core/styles.css'
 import '@/styles/globals.scss'
+import { Box, ColorSchemeScript } from '@mantine/core'
+import '@mantine/core/styles.css'
 import 'material-icons/iconfont/material-icons.css'
+import Image from 'next/image'
+import React from 'react'
 
 export const metadata = {
   title: 'My Next.js App',
@@ -25,9 +25,19 @@ export default function RootLayout({
         </head>
         <body>
           <Providers>
-            <Container maw={applicationProperties.CONTENT_MAX_WIDTH}>
-              {children}
-            </Container>
+            {children}
+
+            <Box display="block" pos="absolute" left={0} bottom={0}>
+              <Box display="block" w="100%" h="20" bg="red">
+                {/* <Image
+                  src="/assets/images/logo/logo_yotap_black.svg"
+                  // width={100}
+                  // height={24}
+                  alt="Yotap logo"
+                /> */}
+                aaa
+              </Box>
+            </Box>
           </Providers>
         </body>
       </html>

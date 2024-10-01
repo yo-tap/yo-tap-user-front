@@ -1,8 +1,7 @@
 'use client'
-import React from 'react'
+import 'swiper/css'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import EffectTinder from './effect-tinder.esm.js'
-import 'swiper/css'
 
 const Component = () => {
   return (
@@ -14,8 +13,30 @@ const Component = () => {
           onSlideChange={() => console.log('slide change')}
         >
           <SwiperSlide>
-            <div>
+            <div style={{ height: 600, backgroundColor: 'red' }}>
               <img src="/assets/images/01.jpg" alt="" />
+              <div className="swiper-tinder-label swiper-tinder-label-yes">
+                Like
+              </div>
+              <div className="swiper-tinder-label swiper-tinder-label-no">
+                Nope
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div>
+              <img src="/assets/images/02.jpg" alt="" />
+              <div className="swiper-tinder-label swiper-tinder-label-yes">
+                Like
+              </div>
+              <div className="swiper-tinder-label swiper-tinder-label-no">
+                Nope
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div>
+              <img src="/assets/images/02.jpg" alt="" />
               <div className="swiper-tinder-label swiper-tinder-label-yes">
                 Like
               </div>
