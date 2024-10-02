@@ -1,44 +1,43 @@
 import { CardSwiper } from '@/components/CardSwiper'
-import { LoginButton } from '@/components/LoginButton'
-import { applicationProperties } from '@/constants/applicationProperties'
 import { fontShrikhand } from '@/utils/fonts'
-import { Box, Container, Flex, Progress } from '@mantine/core'
+import { Box, Flex, Progress } from '@mantine/core'
 import Image from 'next/image'
 
 // app/page.tsx
 const Page = () => {
   return (
     <div>
-      <Flex px={24} justify="space-between">
+      <Flex h={56} px={24} justify="space-between">
         <Flex align="center">
           <Image
             src="/assets/images/logo/logo_yotap_red.svg"
-            width={120}
-            height={24}
+            width={80}
+            height={16}
             alt="Yotap logo"
           />
         </Flex>
-        <Flex mt={24} mb={24} align="center">
+        <Flex align="center">
           <Image
             src="/assets/images/ticker/ticker_yo.png"
-            width={28}
-            height={28}
-            alt="Yotap logo"
+            width={20}
+            height={20}
+            alt="Yotap ticker"
           />
 
-          <Box pl={12} pt={3} fz={18} className={fontShrikhand.className}>
+          <Box pl={8} pt={3} fz={16} className={fontShrikhand.className}>
             32,312
           </Box>
         </Flex>
       </Flex>
 
-      <Progress h={3} value={50} color="red" />
-      {/* <LoginButton /> */}
-      <Container maw={applicationProperties.CONTENT_MAX_WIDTH}>
-        <Box mt={24}>
-          <CardSwiper />
-        </Box>
-      </Container>
+      <Flex h={3} align="top" justify="left">
+        <Progress w="25%" h={2} mr={1} value={50} color="red" />
+        <Progress w="25%" h={2} mx={1} value={0} color="red" />
+        <Progress w="25%" h={2} mx={1} value={0} color="red" />
+        <Progress w="25%" h={2} ml={1} value={0} color="red" />
+      </Flex>
+
+      <CardSwiper />
     </div>
   )
 }

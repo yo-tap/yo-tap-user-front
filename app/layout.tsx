@@ -1,7 +1,7 @@
 // app/layout.tsx
 import { Providers } from '@/providers/providers'
 import '@/styles/globals.scss'
-import { Box, ColorSchemeScript } from '@mantine/core'
+import { Box, ColorSchemeScript, Flex } from '@mantine/core'
 import '@mantine/core/styles.css'
 import 'material-icons/iconfont/material-icons.css'
 import Image from 'next/image'
@@ -27,17 +27,23 @@ export default function RootLayout({
           <Providers>
             {children}
 
-            <Box display="block" pos="absolute" left={0} bottom={0}>
-              <Box display="block" w="100%" h="20" bg="red">
-                {/* <Image
+            <Flex
+              pos="fixed"
+              left={0}
+              bottom={0}
+              justify="center"
+              w="100%"
+              style={{ overflow: 'hidden', zIndex: -1 }}
+            >
+              <Box w={428.27} mb={-24} opacity={0.1}>
+                <Image
                   src="/assets/images/logo/logo_yotap_black.svg"
-                  // width={100}
-                  // height={24}
+                  width={428.27}
+                  height={86}
                   alt="Yotap logo"
-                /> */}
-                aaa
+                />
               </Box>
-            </Box>
+            </Flex>
           </Providers>
         </body>
       </html>
