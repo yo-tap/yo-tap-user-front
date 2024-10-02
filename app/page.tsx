@@ -1,10 +1,22 @@
+'use client'
+import { OCounter } from '@/components/02_organisms/OCounter'
 import { CardSwiper } from '@/components/CardSwiper'
-import { fontShrikhand } from '@/utils/fonts'
-import { Box, Flex, Progress } from '@mantine/core'
+import { ReviewableContent } from '@/types/ReviewableContent'
+import { Flex, Progress } from '@mantine/core'
 import Image from 'next/image'
+import { useState } from 'react'
 
 // app/page.tsx
 const Page = () => {
+  const [point, setPoint] = useState(0)
+  const [reviewedAmount, setReviewedAmount] = useState(0)
+
+  const swiped = (_review: boolean) => {
+    console.log('swiped', _review)
+    setReviewedAmount(reviewedAmount + 1)
+    setPoint(point + 19)
+  }
+
   return (
     <div>
       <Flex h={56} px={24} justify="space-between">
@@ -24,22 +36,157 @@ const Page = () => {
             alt="Yotap ticker"
           />
 
-          <Box pl={8} pt={3} fz={16} className={fontShrikhand.className}>
-            32,312
-          </Box>
+          <Flex pl={8} pt={3}>
+            <OCounter
+              rollSpeed={2}
+              initialRollAnimation={false}
+              fz={16}
+              // num={num}
+              num={point}
+            />
+          </Flex>
         </Flex>
       </Flex>
 
       <Flex h={3} align="top" justify="left">
-        <Progress w="25%" h={2} mr={1} value={50} color="red" />
-        <Progress w="25%" h={2} mx={1} value={0} color="red" />
-        <Progress w="25%" h={2} mx={1} value={0} color="red" />
-        <Progress w="25%" h={2} ml={1} value={0} color="red" />
+        {Array.from({ length: reviewableContents.length }, (_, i) => (
+          <Progress
+            key={i}
+            w={`${100 / reviewableContents.length}%`}
+            h={2}
+            mx={1}
+            value={reviewedAmount > i ? 100 : 0}
+            color="red"
+          />
+        ))}
       </Flex>
 
-      <CardSwiper />
+      <CardSwiper reviewableContents={reviewableContents} onSwiped={swiped} />
     </div>
   )
 }
 
 export default Page
+
+const reviewableContents: ReviewableContent[] = [
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_beeton_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_cakon_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_cat_gold_miner_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_catizen_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_dog_mutant_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_fanton_fantasy_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_gatto_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_hamsterdam_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_holdcoin_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_moewbie_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_beeton_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_cakon_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_cat_gold_miner_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_catizen_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_dog_mutant_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_fanton_fantasy_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_gatto_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_hamsterdam_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_holdcoin_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_moewbie_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_beeton_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_cakon_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_cat_gold_miner_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_catizen_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_dog_mutant_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_fanton_fantasy_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_gatto_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_hamsterdam_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_holdcoin_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_moewbie_image_1.png',
+  },
+]
