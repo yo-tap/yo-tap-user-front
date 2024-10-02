@@ -24,25 +24,54 @@ const Component = () => {
           onSlideChange={() => console.log('slide change')}
         >
           <SwiperSlide style={swiperStyle}>
-            <SwiperSlideWrapper />
+            <SwiperSlideWrapper
+              imageUri={`/assets/images/_sample/picture/_sample_picture_beeton_image_1.png`}
+            />
           </SwiperSlide>
           <SwiperSlide style={swiperStyle}>
-            <SwiperSlideWrapper />
+            <SwiperSlideWrapper
+              imageUri={`/assets/images/_sample/picture/_sample_picture_cakon_image_1.png`}
+            />
           </SwiperSlide>
           <SwiperSlide style={swiperStyle}>
-            <SwiperSlideWrapper />
+            <SwiperSlideWrapper
+              imageUri={`/assets/images/_sample/picture/_sample_picture_cat_gold_miner_image_1.png`}
+            />
           </SwiperSlide>
           <SwiperSlide style={swiperStyle}>
-            <SwiperSlideWrapper />
+            <SwiperSlideWrapper
+              imageUri={`/assets/images/_sample/picture/_sample_picture_catizen_image_1.png`}
+            />
           </SwiperSlide>
           <SwiperSlide style={swiperStyle}>
-            <SwiperSlideWrapper />
+            <SwiperSlideWrapper
+              imageUri={`/assets/images/_sample/picture/_sample_picture_dog_mutant_image_1.png`}
+            />
           </SwiperSlide>
           <SwiperSlide style={swiperStyle}>
-            <SwiperSlideWrapper />
+            <SwiperSlideWrapper
+              imageUri={`/assets/images/_sample/picture/_sample_picture_fanton_fantasy_image_1.png`}
+            />
           </SwiperSlide>
           <SwiperSlide style={swiperStyle}>
-            <SwiperSlideWrapper />
+            <SwiperSlideWrapper
+              imageUri={`/assets/images/_sample/picture/_sample_picture_gatto_image_1.png`}
+            />
+          </SwiperSlide>
+          <SwiperSlide style={swiperStyle}>
+            <SwiperSlideWrapper
+              imageUri={`/assets/images/_sample/picture/_sample_picture_hamsterdam_image_1.png`}
+            />
+          </SwiperSlide>
+          <SwiperSlide style={swiperStyle}>
+            <SwiperSlideWrapper
+              imageUri={`/assets/images/_sample/picture/_sample_picture_holdcoin_image_1.png`}
+            />
+          </SwiperSlide>
+          <SwiperSlide style={swiperStyle}>
+            <SwiperSlideWrapper
+              imageUri={`/assets/images/_sample/picture/_sample_picture_moewbie_image_1.png`}
+            />
           </SwiperSlide>
         </Swiper>
         <Flex>
@@ -63,7 +92,11 @@ const Component = () => {
 
 export { Component as CardSwiper }
 
-const SwiperSlideWrapper: FC = () => {
+type SwiperSlideWrapperProps = {
+  imageUri: string
+}
+
+const SwiperSlideWrapper: FC<SwiperSlideWrapperProps> = ({ imageUri }) => {
   return (
     <Flex w={458} h={740} pos="relative" justify="center">
       <Box
@@ -76,9 +109,9 @@ const SwiperSlideWrapper: FC = () => {
           overflow: 'hidden',
         }}
       >
-        <Box pos="relative" display="block" w={358} h={360}>
+        <Box pos="relative" display="block" w={358} h={600}>
           <Image
-            src="/assets/images/_sample/_sample_ticker.png"
+            src={imageUri}
             alt=""
             fill
             priority
