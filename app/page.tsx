@@ -1,4 +1,5 @@
 'use client'
+import { OCountBaloonAnimation } from '@/components/02_organisms/OCountBaloonAnimation'
 import { OCounter } from '@/components/02_organisms/OCounter'
 import { CardSwiper } from '@/components/CardSwiper'
 import { ReviewableContent } from '@/types/ReviewableContent'
@@ -41,7 +42,6 @@ const Page = () => {
               rollSpeed={2}
               initialRollAnimation={false}
               fz={16}
-              // num={num}
               num={point}
             />
           </Flex>
@@ -61,6 +61,9 @@ const Page = () => {
         ))}
       </Flex>
 
+      <div>
+        aaa <OCountBaloonAnimation addableTotalPoint={10} />{' '}
+      </div>
       <CardSwiper reviewableContents={reviewableContents} onSwiped={swiped} />
     </div>
   )
