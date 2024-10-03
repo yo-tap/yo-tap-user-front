@@ -11,7 +11,7 @@ import { useState } from 'react'
 // app/page.tsx
 const Page = () => {
   const [baloons, setBaloons] = useState<
-    { id: number; point: number; x: number; y: number }[]
+    { id: number; point: number; x: number; y: number; review: boolean }[]
   >([])
   const [point, setPoint] = useState(0)
   const [reviewedAmount, setReviewedAmount] = useState(0)
@@ -22,6 +22,10 @@ const Page = () => {
     setPoint(point + 19)
 
     setCounter(counter + 1)
+
+    const review: boolean = swiper.touches.startX - swiper.touches.currentX < 0
+
+    console.log('review', review)
     setBaloons((prev) => [
       ...prev,
       {
@@ -29,6 +33,7 @@ const Page = () => {
         point: 10 + counter * 5,
         x: swiper.touches.startX,
         y: swiper.touches.startY - 120,
+        review,
       },
     ])
 
@@ -92,13 +97,8 @@ const Page = () => {
             left={baloon.x - 50} // リップルエフェクトのサイズ分一旦引く
             style={{ zIndex: 100 }}
           >
-            <OAddPointBaloon
-              addableTotalPoint={10}
-              trigger={true}
-              counter={counter}
-              isBoosting={true}
-            />
-            <ERippleEffect x={0} y={0} />
+            <OAddPointBaloon addableTotalPoint={10} liked={baloon.review} />
+            <ERippleEffect x={0} y={0} liked={baloon.review} />
           </Box>
         </>
       ))}

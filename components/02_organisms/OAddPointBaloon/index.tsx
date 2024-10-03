@@ -1,22 +1,19 @@
 import { Box } from '@mantine/core'
 import { motion } from 'framer-motion'
 import { FC, useState } from 'react'
-import { colorScheme } from '../../../theme/colorScheme'
 import { fontShrikhand } from '@/utils/fonts'
 
 type Props = {
-  sentence: string
+  liked?: boolean
   addableTotalPoint?: number
-  isBoosting?: boolean
   animationEnabled?: boolean
 }
 
 const animateDurationSecond = 2
 
 const Component: FC<Props> = ({
-  sentence,
+  liked,
   addableTotalPoint,
-  isBoosting,
   animationEnabled = true,
 }) => {
   const [localTrigger, setLocalTrigger] = useState(animationEnabled)
@@ -31,10 +28,16 @@ const Component: FC<Props> = ({
     <>
       <motion.div
         variants={{
-          hidden: { y: -24, opacity: 0, rotateZ: -45 },
+          hidden: {
+            y: -24,
+            opacity: 0,
+            rotateZ: liked ? -45 : -10,
+            scale: liked ? 1.5 : 1.1,
+          },
           visible: {
             y: y,
-            rotateZ: 90,
+            rotateZ: liked ? 90 : -40,
+            scale: liked ? 1 : 0.8,
             opacity: opacity,
             transition: {
               duration: animateDurationSecond,
@@ -48,11 +51,7 @@ const Component: FC<Props> = ({
       >
         <Box
           w="100%"
-          bg={
-            isBoosting
-              ? colorScheme.scheme1.accent2.surface
-              : colorScheme.scheme1.accent1.surface
-          }
+          bg={liked ? 'red' : 'green'}
           ta="center"
           py={1}
           px={16}
@@ -68,7 +67,7 @@ const Component: FC<Props> = ({
               textShadow: '2px 2px 0px rgba(0, 0, 0, 1)',
             }}
           >
-            LIKED!
+            {liked ? 'LIKED!' : 'NOOPS..'}
           </Box>
           <Box
             mt={-12}
