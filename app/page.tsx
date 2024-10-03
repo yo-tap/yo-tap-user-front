@@ -6,7 +6,7 @@ import { CardSwiper } from '@/components/CardSwiper'
 import { ReviewableContent } from '@/types/ReviewableContent'
 import { Box, Flex, Progress } from '@mantine/core'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // app/page.tsx
 const Page = () => {
@@ -17,13 +17,25 @@ const Page = () => {
   const [reviewedAmount, setReviewedAmount] = useState(0)
   const [counter, setCounter] = useState(0)
 
+  const likedSoundRef = useRef<HTMLAudioElement | null>(null)
+  const noopsSoundRef = useRef<HTMLAudioElement | null>(null)
+
+  useEffect(() => {
+    likedSoundRef.current = new Audio('/assets/sounds/liked.mp3')
+    noopsSoundRef.current = new Audio('/assets/sounds/noops2.wav')
+  }, [])
+
   const swiped = (swiper: any) => {
+    const review: boolean = swiper.touches.startX - swiper.touches.currentX < 0
+    if (review) {
+      likedSoundRef.current?.play()
+    } else {
+      noopsSoundRef.current?.play()
+    }
     setReviewedAmount(reviewedAmount + 1)
     setPoint(point + 19)
 
     setCounter(counter + 1)
-
-    const review: boolean = swiper.touches.startX - swiper.touches.currentX < 0
 
     console.log('review', review)
     setBaloons((prev) => [
@@ -111,11 +123,11 @@ export default Page
 const reviewableContents: ReviewableContent[] = [
   {
     imageUrl:
-      '/assets/images/_sample/picture/_sample_picture_beeton_image_1.png',
+      '/assets/images/_sample/picture/_sample_picture_cakon_image_5.png',
   },
   {
     imageUrl:
-      '/assets/images/_sample/picture/_sample_picture_cakon_image_1.png',
+      '/assets/images/_sample/picture/_sample_picture_beeton_image_1.png',
   },
   {
     imageUrl:
@@ -155,7 +167,11 @@ const reviewableContents: ReviewableContent[] = [
   },
   {
     imageUrl:
-      '/assets/images/_sample/picture/_sample_picture_cakon_image_1.png',
+      '/assets/images/_sample/picture/_sample_picture_cakon_image_5.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_beeton_image_1.png',
   },
   {
     imageUrl:
@@ -195,7 +211,11 @@ const reviewableContents: ReviewableContent[] = [
   },
   {
     imageUrl:
-      '/assets/images/_sample/picture/_sample_picture_cakon_image_1.png',
+      '/assets/images/_sample/picture/_sample_picture_cakon_image_5.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_beeton_image_1.png',
   },
   {
     imageUrl:
@@ -228,5 +248,9 @@ const reviewableContents: ReviewableContent[] = [
   {
     imageUrl:
       '/assets/images/_sample/picture/_sample_picture_moewbie_image_1.png',
+  },
+  {
+    imageUrl:
+      '/assets/images/_sample/picture/_sample_picture_beeton_image_1.png',
   },
 ]
