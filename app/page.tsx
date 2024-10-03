@@ -1,21 +1,35 @@
 'use client'
-import { OCountBaloonAnimation } from '@/components/02_organisms/OCountBaloonAnimation'
+import { OAddPointBaloon } from '@/components/02_organisms/OAddPointBaloon'
 import { OCounter } from '@/components/02_organisms/OCounter'
 import { CardSwiper } from '@/components/CardSwiper'
 import { ReviewableContent } from '@/types/ReviewableContent'
-import { Flex, Progress } from '@mantine/core'
+import { Box, Flex, Progress } from '@mantine/core'
 import Image from 'next/image'
 import { useState } from 'react'
 
 // app/page.tsx
 const Page = () => {
+  const [baloons, setBaloons] = useState<{ id: number; point: number }[]>([])
   const [point, setPoint] = useState(0)
   const [reviewedAmount, setReviewedAmount] = useState(0)
+  const [counter, setCounter] = useState(0)
 
   const swiped = (_review: boolean) => {
     console.log('swiped', _review)
     setReviewedAmount(reviewedAmount + 1)
     setPoint(point + 19)
+
+    setCounter(counter + 1)
+    // 新しいバルーンを追加（ポイントを追加）
+    setBaloons((prev) => [
+      ...prev,
+      { id: counter, point: 10 + counter * 5 }, // IDとポイントを設定
+    ])
+
+    // 一定時間後にバルーンを削除する
+    setTimeout(() => {
+      setBaloons((prev) => prev.filter((baloon) => baloon.id !== counter))
+    }, 3 * 1000)
   }
 
   return (
@@ -61,10 +75,30 @@ const Page = () => {
         ))}
       </Flex>
 
-      <div>
-        aaa <OCountBaloonAnimation addableTotalPoint={10} />{' '}
-      </div>
-      <CardSwiper reviewableContents={reviewableContents} onSwiped={swiped} />
+      <Box display="block" pos="relative">
+        <Box style={{ zIndex: 10 }}>
+          <CardSwiper
+            reviewableContents={reviewableContents}
+            onSwiped={swiped}
+          />
+        </Box>
+        {baloons.map((baloon) => (
+          <Box
+            key={baloon.id}
+            pos="absolute"
+            top={100}
+            left={'50%'}
+            style={{ zIndex: 100 }}
+          >
+            <OAddPointBaloon
+              addableTotalPoint={10}
+              trigger={true}
+              counter={counter}
+              isBoosting={true}
+            />
+          </Box>
+        ))}
+      </Box>
     </div>
   )
 }

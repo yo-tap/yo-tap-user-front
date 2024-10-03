@@ -1,31 +1,24 @@
 import { Box } from '@mantine/core'
 import { motion } from 'framer-motion'
-import { FC, useEffect, useLayoutEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import { colorScheme } from '../../../theme/colorScheme'
 
 type Props = {
+  trigger: boolean
+  counter: number
   addableTotalPoint?: number
   isBoosting?: boolean
   animationEnabled?: boolean
 }
 
-const animateDurationSecond = 3
+const animateDurationSecond = 1.5
 
 const Component: FC<Props> = ({
   addableTotalPoint,
   isBoosting,
   animationEnabled = true,
 }) => {
-  // const { trigger } = useAnimateTriggerStore()
-  // const [localTrigger, setLocalTrigger] = useState(animationEnabled && trigger)
   const [localTrigger, setLocalTrigger] = useState(animationEnabled)
-
-  // useLayoutEffect(() => {
-  //   if (trigger) {
-  //     if (!animationEnabled) return
-  //     setLocalTrigger(true)
-  //   }
-  // }, [trigger, animationEnabled])
 
   const resetTrigger = () => {
     setLocalTrigger(false)
@@ -59,7 +52,8 @@ const Component: FC<Props> = ({
               : colorScheme.scheme1.accent1.surface
           }
           ta="center"
-          fz={ballonFz(addableTotalPoint, isBoosting)}
+          // fz={ballonFz(addableTotalPoint, isBoosting)}
+          fz={32}
           py={1}
           px={8}
           ff="outfit"
@@ -74,7 +68,7 @@ const Component: FC<Props> = ({
   )
 }
 
-export { Component as OCountBaloonAnimation }
+export { Component as OAddPointBaloon }
 
 // private components----
 
@@ -90,13 +84,3 @@ const generateSinWave = (points: number, amplitude: number, offset: number) => {
 }
 
 const { y, opacity } = generateSinWave(10, -20, -12)
-
-const ballonFz = (addableTotalPoint: number, isBoosting?: boolean) => {
-  if (!isBoosting) return 14
-
-  if (addableTotalPoint > 50) return 24
-  if (addableTotalPoint > 20) return 22
-  if (addableTotalPoint > 10) return 20
-  if (addableTotalPoint > 5) return 18
-  return 16
-}
