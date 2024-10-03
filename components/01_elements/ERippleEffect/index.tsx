@@ -2,12 +2,12 @@ import { motion } from 'framer-motion'
 import { FC } from 'react'
 
 type Props = {
-  liked: boolean
   x: number
   y: number
+  color: string
 }
 
-const Component: FC<Props> = ({ liked, x, y }) => {
+const Component: FC<Props> = ({ x, y, color = 'red' }) => {
   return (
     <motion.div
       initial={{ scale: 0, opacity: 1 }}
@@ -20,7 +20,8 @@ const Component: FC<Props> = ({ liked, x, y }) => {
         width: 100,
         height: 100,
         borderRadius: '50%',
-        background: liked ? 'rgba(255, 0, 0, 0.4)' : 'rgba(0, 255, 0, 0.4)',
+        background: color,
+        opacity: 0.5,
         transform: 'translate(-50%, -50%)',
         pointerEvents: 'none',
         zIndex: 100,

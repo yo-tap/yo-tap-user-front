@@ -5,6 +5,8 @@ import { fontShrikhand } from '@/utils/fonts'
 
 type Props = {
   liked?: boolean
+  message?: string
+  bgColor?: string
   addableTotalPoint?: number
   animationEnabled?: boolean
 }
@@ -14,6 +16,8 @@ const animateDurationSecond = 2
 const Component: FC<Props> = ({
   liked,
   addableTotalPoint,
+  message = 'liked',
+  bgColor = 'red',
   animationEnabled = true,
 }) => {
   const [localTrigger, setLocalTrigger] = useState(animationEnabled)
@@ -51,7 +55,7 @@ const Component: FC<Props> = ({
       >
         <Box
           w="100%"
-          bg={liked ? 'red' : 'green'}
+          bg={bgColor}
           ta="center"
           py={1}
           px={16}
@@ -67,7 +71,8 @@ const Component: FC<Props> = ({
               textShadow: '2px 2px 0px rgba(0, 0, 0, 1)',
             }}
           >
-            {liked ? 'LIKED!' : 'NOOPS..'}
+            {/* {liked ? 'LIKED!' : 'NOOPS..'} */}
+            {message}
           </Box>
           <Box
             mt={-12}

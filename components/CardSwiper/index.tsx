@@ -30,7 +30,6 @@ const Component: FC<Props> = ({ reviewableContents, onSwiped }) => {
           effect="tinder"
           onSlideChange={(swiper) => {
             onSwiped(swiper)
-            // onSwiped(true)
           }}
         >
           {reviewableContents.map((content, index) => {
@@ -42,10 +41,7 @@ const Component: FC<Props> = ({ reviewableContents, onSwiped }) => {
           })}
         </Swiper>
         <Flex>
-          <button
-            className="swiper-tinder-button swiper-tinder-button-no"
-            // style={{ marginLeft: 16 }} wideSizeの場合
-          >
+          <button className="swiper-tinder-button swiper-tinder-button-no">
             <Box className="material-icons-outlined">close</Box>
           </button>
           <button className="swiper-tinder-button swiper-tinder-button-yes">
@@ -76,17 +72,7 @@ const SwiperSlideWrapper: FC<SwiperSlideWrapperProps> = ({ imageUri }) => {
           overflow: 'hidden',
         }}
       >
-        <Flex px={24} py={24}>
-          <Box>
-            <Box fz={18} fw={700}>
-              WINK LEGACY
-            </Box>
-            <Box fz={12} fw={700}>
-              TAP GAME
-            </Box>
-          </Box>
-        </Flex>
-        <Box pos="relative" display="block" w={358} h={600}>
+        <Box pos="relative" display="block" w={358} h={500}>
           <Image
             src={imageUri}
             alt=""
@@ -97,9 +83,6 @@ const SwiperSlideWrapper: FC<SwiperSlideWrapperProps> = ({ imageUri }) => {
           />
         </Box>
       </Box>
-      {/* <img src="/assets/images/_sample/_sample_ticker.png" alt="" /> */}
-      {/* <div className="swiper-tinder-label swiper-tinder-label-yes">Like</div>
-      <div className="swiper-tinder-label swiper-tinder-label-no">Nope</div> */}
     </Flex>
   )
 }
