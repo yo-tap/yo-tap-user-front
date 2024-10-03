@@ -25,7 +25,14 @@ export default function RootLayout({
         </head>
         <body>
           <Providers>
-            {children}
+            <Box
+              maw="100vw"
+              mah="100vh"
+              pos="relative"
+              style={{ overflow: 'hidden' }}
+            >
+              {children}
+            </Box>
 
             <Flex
               pos="fixed"

@@ -1,4 +1,5 @@
 'use client'
+import { ERippleEffect } from '@/components/01_elements/ERippleEffect'
 import { OAddPointBaloon } from '@/components/02_organisms/OAddPointBaloon'
 import { OCounter } from '@/components/02_organisms/OCounter'
 import { CardSwiper } from '@/components/CardSwiper'
@@ -17,8 +18,6 @@ const Page = () => {
   const [counter, setCounter] = useState(0)
 
   const swiped = (swiper: any) => {
-    console.log('swiped', swiper)
-    console.log('swiped222', swiper.touches)
     setReviewedAmount(reviewedAmount + 1)
     setPoint(point + 19)
 
@@ -29,14 +28,14 @@ const Page = () => {
         id: counter,
         point: 10 + counter * 5,
         x: swiper.touches.startX,
-        y: swiper.touches.startY,
+        y: swiper.touches.startY - 120,
       },
     ])
 
     // 一定時間後にバルーンを削除する
     setTimeout(() => {
       setBaloons((prev) => prev.filter((baloon) => baloon.id !== counter))
-    }, 3 * 1000)
+    }, 1 * 1000)
   }
 
   return (
@@ -82,31 +81,26 @@ const Page = () => {
         ))}
       </Flex>
 
-      <Box display="block" pos="relative">
-        <Box style={{ zIndex: 10 }}>
-          <CardSwiper
-            reviewableContents={reviewableContents}
-            onSwiped={swiped}
-          />
-        </Box>
-      </Box>
+      <CardSwiper reviewableContents={reviewableContents} onSwiped={swiped} />
+
       {baloons.map((baloon) => (
-        <Box
-          key={baloon.id}
-          pos="absolute"
-          top={baloon.y}
-          left={baloon.x}
-          // top={100}
-          // left={'50%'}
-          style={{ zIndex: 100 }}
-        >
-          <OAddPointBaloon
-            addableTotalPoint={10}
-            trigger={true}
-            counter={counter}
-            isBoosting={true}
-          />
-        </Box>
+        <>
+          <Box
+            key={baloon.id}
+            pos="absolute"
+            top={baloon.y}
+            left={baloon.x}
+            style={{ zIndex: 100 }}
+          >
+            <OAddPointBaloon
+              addableTotalPoint={10}
+              trigger={true}
+              counter={counter}
+              isBoosting={true}
+            />
+            <ERippleEffect x={0} y={0} />
+          </Box>
+        </>
       ))}
     </div>
   )

@@ -11,7 +11,7 @@ type Props = {
   animationEnabled?: boolean
 }
 
-const animateDurationSecond = 1.5
+const animateDurationSecond = 2
 
 const Component: FC<Props> = ({
   addableTotalPoint,

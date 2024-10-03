@@ -96,8 +96,8 @@ const SwiperSlideWrapper: FC<SwiperSlideWrapperProps> = ({ imageUri }) => {
         </Box>
       </Box>
       {/* <img src="/assets/images/_sample/_sample_ticker.png" alt="" /> */}
-      <div className="swiper-tinder-label swiper-tinder-label-yes">Like</div>
-      <div className="swiper-tinder-label swiper-tinder-label-no">Nope</div>
+      {/* <div className="swiper-tinder-label swiper-tinder-label-yes">Like</div>
+      <div className="swiper-tinder-label swiper-tinder-label-no">Nope</div> */}
     </Flex>
   )
 }
