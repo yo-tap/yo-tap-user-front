@@ -9,21 +9,28 @@ import { useState } from 'react'
 
 // app/page.tsx
 const Page = () => {
-  const [baloons, setBaloons] = useState<{ id: number; point: number }[]>([])
+  const [baloons, setBaloons] = useState<
+    { id: number; point: number; x: number; y: number }[]
+  >([])
   const [point, setPoint] = useState(0)
   const [reviewedAmount, setReviewedAmount] = useState(0)
   const [counter, setCounter] = useState(0)
 
-  const swiped = (_review: boolean) => {
-    console.log('swiped', _review)
+  const swiped = (swiper: any) => {
+    console.log('swiped', swiper)
+    console.log('swiped222', swiper.touches)
     setReviewedAmount(reviewedAmount + 1)
     setPoint(point + 19)
 
     setCounter(counter + 1)
-    // 新しいバルーンを追加（ポイントを追加）
     setBaloons((prev) => [
       ...prev,
-      { id: counter, point: 10 + counter * 5 }, // IDとポイントを設定
+      {
+        id: counter,
+        point: 10 + counter * 5,
+        x: swiper.touches.startX,
+        y: swiper.touches.startY,
+      },
     ])
 
     // 一定時間後にバルーンを削除する
@@ -82,23 +89,25 @@ const Page = () => {
             onSwiped={swiped}
           />
         </Box>
-        {baloons.map((baloon) => (
-          <Box
-            key={baloon.id}
-            pos="absolute"
-            top={100}
-            left={'50%'}
-            style={{ zIndex: 100 }}
-          >
-            <OAddPointBaloon
-              addableTotalPoint={10}
-              trigger={true}
-              counter={counter}
-              isBoosting={true}
-            />
-          </Box>
-        ))}
       </Box>
+      {baloons.map((baloon) => (
+        <Box
+          key={baloon.id}
+          pos="absolute"
+          top={baloon.y}
+          left={baloon.x}
+          // top={100}
+          // left={'50%'}
+          style={{ zIndex: 100 }}
+        >
+          <OAddPointBaloon
+            addableTotalPoint={10}
+            trigger={true}
+            counter={counter}
+            isBoosting={true}
+          />
+        </Box>
+      ))}
     </div>
   )
 }

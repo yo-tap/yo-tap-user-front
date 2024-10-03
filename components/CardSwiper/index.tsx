@@ -9,7 +9,7 @@ import EffectTinder from './effect-tinder.esm.js'
 
 type Props = {
   reviewableContents: ReviewableContent[]
-  onSwiped: (review: boolean) => void
+  onSwiped: (swiper: any) => void
 }
 
 const Component: FC<Props> = ({ reviewableContents, onSwiped }) => {
@@ -29,8 +29,8 @@ const Component: FC<Props> = ({ reviewableContents, onSwiped }) => {
           modules={[EffectTinder]}
           effect="tinder"
           onSlideChange={(swiper) => {
-            console.log('slide change', swiper)
-            onSwiped(true)
+            onSwiped(swiper)
+            // onSwiped(true)
           }}
         >
           {reviewableContents.map((content, index) => {
