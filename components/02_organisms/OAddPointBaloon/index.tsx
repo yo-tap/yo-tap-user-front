@@ -2,10 +2,10 @@ import { Box } from '@mantine/core'
 import { motion } from 'framer-motion'
 import { FC, useState } from 'react'
 import { colorScheme } from '../../../theme/colorScheme'
+import { fontShrikhand } from '@/utils/fonts'
 
 type Props = {
-  trigger: boolean
-  counter: number
+  sentence: string
   addableTotalPoint?: number
   isBoosting?: boolean
   animationEnabled?: boolean
@@ -14,6 +14,7 @@ type Props = {
 const animateDurationSecond = 2
 
 const Component: FC<Props> = ({
+  sentence,
   addableTotalPoint,
   isBoosting,
   animationEnabled = true,
@@ -30,9 +31,10 @@ const Component: FC<Props> = ({
     <>
       <motion.div
         variants={{
-          hidden: { y: -12, opacity: 0 },
+          hidden: { y: -24, opacity: 0, rotateZ: -45 },
           visible: {
             y: y,
+            rotateZ: 90,
             opacity: opacity,
             transition: {
               duration: animateDurationSecond,
@@ -52,16 +54,33 @@ const Component: FC<Props> = ({
               : colorScheme.scheme1.accent1.surface
           }
           ta="center"
-          // fz={ballonFz(addableTotalPoint, isBoosting)}
-          fz={32}
           py={1}
-          px={8}
-          ff="outfit"
-          fw={700}
+          px={16}
           c="white"
-          style={{ borderRadius: 24 }}
+          style={{
+            borderRadius: 12,
+          }}
+          className={fontShrikhand.className}
         >
-          +{addableTotalPoint.toLocaleString()}
+          <Box
+            fz={16}
+            style={{
+              textShadow: '2px 2px 0px rgba(0, 0, 0, 1)',
+            }}
+          >
+            LIKED!
+          </Box>
+          <Box
+            mt={-12}
+            mb={-6}
+            fw={700}
+            fz={32}
+            style={{
+              textShadow: '4px 4px 0px rgba(0, 0, 0, 1)',
+            }}
+          >
+            +{addableTotalPoint.toLocaleString()}
+          </Box>
         </Box>
       </motion.div>
     </>

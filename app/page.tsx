@@ -89,7 +89,7 @@ const Page = () => {
             key={baloon.id}
             pos="absolute"
             top={baloon.y}
-            left={baloon.x}
+            left={baloon.x - 50} // リップルエフェクトのサイズ分一旦引く
             style={{ zIndex: 100 }}
           >
             <OAddPointBaloon
