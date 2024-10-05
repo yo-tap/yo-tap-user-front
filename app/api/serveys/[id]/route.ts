@@ -56,6 +56,8 @@ export async function GET(
       data: {
         uniqueKey: generateHashId(),
         contents: [],
+        name: 'Survey',
+        imageUrl: 'https://source.unsplash.com/random',
         user: {
           connect: {
             id: user.id,

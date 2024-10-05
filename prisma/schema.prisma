@@ -16,7 +16,7 @@ model Servey {
 
   userId Int @map("user_id")
 
-  name     String @db.VarChar(255)
+  name     String? @db.VarChar(65535)
   imageUrl String? @map("image_url") @db.VarChar(65535)
 
   contents Json?
