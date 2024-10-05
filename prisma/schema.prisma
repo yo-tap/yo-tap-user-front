@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Servey {
+  id        Int    @id @default(autoincrement())
+  uniqueKey String @map("unique_key") @db.VarChar(255)
+
+  description String @db.Text //アンケートの説明
+
+  name     String @db.VarChar(255) //アンケートの名前
+  contents Json?
+
+  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  answers Answer[]
+
+  @@unique([uniqueKey])
+  @@index([uniqueKey], name: "serveys_unique_key")
+  @@map("serveys")
+}
+
+model Answer {
+  id        Int    @id @default(autoincrement())
+  uniqueKey String @map("unique_key") @db.VarChar(255)
+
+  userId   Int @map("user_id")
+  serveyId Int @map("servey_id")
+
+  contents Json?
+
+  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  servey Servey @relation(fields: [serveyId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@unique([uniqueKey])
+  @@index([uniqueKey], name: "answers_unique_key")
+  @@index([userId], name: "answers_user_id")
+  @@map("answers")
+}
+
+model User {
+  id        Int    @id @default(autoincrement())
+  uniqueKey String @map("unique_key") @db.VarChar(255)
+
+  firebaseUid String @map("firebase_uid") @db.VarChar(255)
+
+  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  answers Answer[]
+
+  @@unique([uniqueKey])
+  @@index([uniqueKey], name: "users_unique_key")
+  @@map("users")
+}
