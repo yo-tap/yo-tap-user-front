@@ -14,6 +14,8 @@ model Servey {
   id        Int    @id @default(autoincrement())
   uniqueKey String @map("unique_key") @db.VarChar(255)
 
+  userId Int @map("user_id")
+
   description String @db.Text //アンケートの説明
 
   name     String @db.VarChar(255) //アンケートの名前
@@ -23,9 +25,11 @@ model Servey {
   createdAt DateTime @default(now()) @map("created_at")
 
   answers Answer[]
+  user    User     @relation(fields: [userId], references: [id])
 
   @@unique([uniqueKey])
   @@index([uniqueKey], name: "serveys_unique_key")
+  @@index([userId], name: "serveys_user_id")
   @@map("serveys")
 }
 
@@ -60,10 +64,11 @@ model User {
   createdAt DateTime @default(now()) @map("created_at")
 
   answers Answer[]
+  Servey  Servey[]
 
   @@unique([uniqueKey])
-  @@index([uniqueKey], name: "users_unique_key")
   @@unique([firebaseUid])
+  @@index([uniqueKey], name: "users_unique_key")
   @@index([firebaseUid], name: "users_firebase_uid")
   @@map("users")
 }

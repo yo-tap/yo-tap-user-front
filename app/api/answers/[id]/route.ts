@@ -11,7 +11,7 @@ export async function GET(
 ) {
   try {
     const { id } = params
-    console.log('Survey ID:', id)
+    console.log('Answer ID:', id)
 
     const authHeader = request.headers.get('Authorization')
     if (!authHeader) {
@@ -52,7 +52,7 @@ export async function GET(
 
     // TODO you already answerd
 
-    const answer = await prisma.servey.create({
+    const answer = await prisma.answer.create({
       data: {
         uniqueKey: generateHashId(),
         contents: [],
