@@ -5,7 +5,7 @@ import { generateHashId } from '@/utils/generate-id.util'
 import { User } from '@prisma/client'
 import { NextRequest, NextResponse } from 'next/server'
 
-export async function GET(
+export async function POST(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
@@ -50,19 +50,23 @@ export async function GET(
       user = existsUser
     }
 
+    // リクエストボディから JSON データを取得
+    const body = await request.json()
+    const { contents, name, imageUrl } = body
+
     // TODO you already answerd
 
     const answer = await prisma.servey.create({
       data: {
         uniqueKey: generateHashId(),
-        contents: [],
-        name: 'Survey',
-        imageUrl: 'https://source.unsplash.com/random',
+        name,
+        imageUrl,
         user: {
           connect: {
             id: user.id,
           },
         },
+        contents: contents as any,
       },
     })
 
