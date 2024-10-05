@@ -16,9 +16,9 @@ model Servey {
 
   userId Int @map("user_id")
 
-  description String @db.Text //アンケートの説明
+  name     String @db.VarChar(255)
+  imageUrl String? @map("image_url") @db.VarChar(65535)
 
-  name     String @db.VarChar(255) //アンケートの名前
   contents Json?
 
   updatedAt DateTime @updatedAt @map("updated_at")

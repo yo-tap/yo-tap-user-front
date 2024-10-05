@@ -61,11 +61,6 @@ export async function GET(
             id: user.id,
           },
         },
-        servey: {
-          connect: {
-            id: Number(2),
-          },
-        },
       },
     })
 
