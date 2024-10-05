@@ -3,8 +3,10 @@ import { ERippleEffect } from '@/components/01_elements/ERippleEffect'
 import { OAddPointBaloon } from '@/components/02_organisms/OAddPointBaloon'
 import { OCounter } from '@/components/02_organisms/OCounter'
 import { CardSwiper } from '@/components/CardSwiper'
+import { auth } from '@/lib/firebase'
 import { ReviewableContent } from '@/types/ReviewableContent'
 import { Box, Flex, Progress } from '@mantine/core'
+import { signInAnonymously } from 'firebase/auth'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
@@ -29,8 +31,32 @@ const Page = () => {
   const noopsSoundRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
-    likedSoundRef.current = new Audio('/assets/sounds/liked.mp3')
-    noopsSoundRef.current = new Audio('/assets/sounds/noops2.wav')
+    ;(async () => {
+      // setup sound
+      likedSoundRef.current = new Audio('/assets/sounds/liked.mp3')
+      noopsSoundRef.current = new Audio('/assets/sounds/noops2.wav')
+
+      // sign in anonymously
+      const userCredential = await signInAnonymously(auth)
+      const jwt = await userCredential.user.getIdToken()
+      const response = await fetch('/api/users', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${jwt}`, // JWT を Authorization ヘッダーにセット
+        },
+      })
+      console.log('response-------------', response)
+
+      const response2 = await fetch('/api/serveys/1', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${jwt}`, // JWT を Authorization ヘッダーにセット
+        },
+      })
+      console.log('response2-------------', response2)
+    })()
   }, [])
 
   const swiped = (swiper: any) => {

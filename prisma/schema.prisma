@@ -63,5 +63,7 @@ model User {
 
   @@unique([uniqueKey])
   @@index([uniqueKey], name: "users_unique_key")
+  @@unique([firebaseUid])
+  @@index([firebaseUid], name: "users_firebase_uid")
   @@map("users")
 }
