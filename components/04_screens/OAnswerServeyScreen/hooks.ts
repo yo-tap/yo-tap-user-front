@@ -43,6 +43,8 @@ export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
           Authorization: `Bearer ${jwt}`, // JWT を Authorization ヘッダーにセット
         },
       })
+
+      // answerがあるか
       console.log('response-------------', response)
     })()
   }, [])

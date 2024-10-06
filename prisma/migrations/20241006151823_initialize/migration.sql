@@ -1,15 +1,15 @@
 -- CreateTable
-CREATE TABLE "serveys" (
+CREATE TABLE "surveys" (
     "id" SERIAL NOT NULL,
     "unique_key" VARCHAR(255) NOT NULL,
     "user_id" INTEGER NOT NULL,
-    "name" VARCHAR(255) NOT NULL,
+    "name" VARCHAR(65535),
     "image_url" VARCHAR(65535),
     "contents" JSONB,
     "updated_at" TIMESTAMP(3) NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "serveys_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "surveys_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -17,7 +17,7 @@ CREATE TABLE "answers" (
     "id" SERIAL NOT NULL,
     "unique_key" VARCHAR(255) NOT NULL,
     "user_id" INTEGER NOT NULL,
-    "servey_id" INTEGER NOT NULL,
+    "Survey_id" INTEGER NOT NULL,
     "contents" JSONB,
     "updated_at" TIMESTAMP(3) NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -37,13 +37,13 @@ CREATE TABLE "users" (
 );
 
 -- CreateIndex
-CREATE INDEX "serveys_unique_key" ON "serveys"("unique_key");
+CREATE INDEX "surveys_unique_key" ON "surveys"("unique_key");
 
 -- CreateIndex
-CREATE INDEX "serveys_user_id" ON "serveys"("user_id");
+CREATE INDEX "surveys_user_id" ON "surveys"("user_id");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "serveys_unique_key_key" ON "serveys"("unique_key");
+CREATE UNIQUE INDEX "surveys_unique_key_key" ON "surveys"("unique_key");
 
 -- CreateIndex
 CREATE INDEX "answers_unique_key" ON "answers"("unique_key");
@@ -67,10 +67,10 @@ CREATE UNIQUE INDEX "users_unique_key_key" ON "users"("unique_key");
 CREATE UNIQUE INDEX "users_firebase_uid_key" ON "users"("firebase_uid");
 
 -- AddForeignKey
-ALTER TABLE "serveys" ADD CONSTRAINT "serveys_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "surveys" ADD CONSTRAINT "surveys_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "answers" ADD CONSTRAINT "answers_servey_id_fkey" FOREIGN KEY ("servey_id") REFERENCES "serveys"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "answers" ADD CONSTRAINT "answers_Survey_id_fkey" FOREIGN KEY ("Survey_id") REFERENCES "surveys"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "answers" ADD CONSTRAINT "answers_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

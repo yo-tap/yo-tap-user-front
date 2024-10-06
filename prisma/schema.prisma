@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Servey {
+model Survey {
   id        Int    @id @default(autoincrement())
   uniqueKey String @map("unique_key") @db.VarChar(255)
 
@@ -28,9 +28,9 @@ model Servey {
   user    User     @relation(fields: [userId], references: [id])
 
   @@unique([uniqueKey])
-  @@index([uniqueKey], name: "serveys_unique_key")
-  @@index([userId], name: "serveys_user_id")
-  @@map("serveys")
+  @@index([uniqueKey], name: "surveys_unique_key")
+  @@index([userId], name: "surveys_user_id")
+  @@map("surveys")
 }
 
 model Answer {
@@ -38,14 +38,14 @@ model Answer {
   uniqueKey String @map("unique_key") @db.VarChar(255)
 
   userId   Int @map("user_id")
-  serveyId Int @map("servey_id")
+  SurveyId Int @map("Survey_id")
 
   contents Json?
 
   updatedAt DateTime @updatedAt @map("updated_at")
   createdAt DateTime @default(now()) @map("created_at")
 
-  servey Servey @relation(fields: [serveyId], references: [id])
+  Survey Survey @relation(fields: [SurveyId], references: [id])
   user   User   @relation(fields: [userId], references: [id])
 
   @@unique([uniqueKey])
@@ -64,7 +64,7 @@ model User {
   createdAt DateTime @default(now()) @map("created_at")
 
   answers Answer[]
-  Servey  Servey[]
+  Survey  Survey[]
 
   @@unique([uniqueKey])
   @@unique([firebaseUid])
