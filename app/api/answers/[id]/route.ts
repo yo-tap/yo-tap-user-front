@@ -1,4 +1,4 @@
-// app/api/serveys/[id]/route.ts
+// app/api/surveys/[id]/route.ts
 import { adminAuth } from '@/lib/firebase-admin'
 import { prisma } from '@/lib/prisma'
 import { generateHashId } from '@/utils/generate-id.util'
@@ -59,13 +59,15 @@ export async function GET(
             id: user.id,
           },
         },
-        servey: {
+        survey: {
           connect: {
             id: Number(2),
           },
         },
       },
     })
+
+    console.log('answer', answer)
 
     return NextResponse.json(
       { message: `Survey ID: ${id} fetched successfully` },

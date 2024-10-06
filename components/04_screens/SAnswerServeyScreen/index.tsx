@@ -8,7 +8,7 @@ import { CardSwiper } from '@/components/CardSwiper'
 import { SurveyEntity } from '@/types/Survey'
 import { Box } from '@mantine/core'
 import { FC, memo } from 'react'
-import { useAnswerServeyScreen } from './hooks'
+import { useAnswerSurveyScreen } from './hooks'
 
 type Props = {
   surveyEntity: SurveyEntity
@@ -16,7 +16,7 @@ type Props = {
 
 const Component: FC<Props> = ({ surveyEntity }) => {
   const { baloons, point, counter, swiped, answeredContents } =
-    useAnswerServeyScreen(surveyEntity)
+    useAnswerSurveyScreen(surveyEntity)
 
   return (
     <div>
@@ -52,7 +52,7 @@ const Component: FC<Props> = ({ surveyEntity }) => {
   )
 }
 
-export { Component as OAnswerServeyScreen }
+export { Component as SAnswerSurveyScreen }
 
 const MemoizedAddPointBaloon = memo(OAddPointBaloon)
 MemoizedAddPointBaloon.displayName = 'MemoizedAddPointBaloon'

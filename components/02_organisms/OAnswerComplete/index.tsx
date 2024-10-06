@@ -224,7 +224,7 @@ const Component: FC<Props> = ({ point }) => {
           {/* {answeredContents.map((answeredContent, index) => {
         return (
           <>
-            <div>{answeredContent.serveyTitle}</div>
+            <div>{answeredContent.surveyTitle}</div>
             <div key={index}>{answeredContent.answeredLabelString}</div>
           </>
         )

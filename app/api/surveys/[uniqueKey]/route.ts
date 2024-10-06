@@ -1,4 +1,4 @@
-// app/api/serveys/[id]/route.ts
+// app/api/surveys/[id]/route.ts
 import { adminAuth } from '@/lib/firebase-admin'
 import { prisma } from '@/lib/prisma'
 import { SurveyEntity } from '@/types/Survey'
@@ -12,21 +12,21 @@ export async function GET(
   { params }: { params: { uniqueKey: string } }
 ) {
   try {
-    const servey = await prisma.servey.findUnique({
+    const survey = await prisma.survey.findUnique({
       where: {
         uniqueKey: params.uniqueKey,
       },
     })
 
-    if (!servey) {
+    if (!survey) {
       return NextResponse.json({ error: 'Survey not found' }, { status: 404 })
     }
 
     const surveyEntity: SurveyEntity = {
-      uniqueKey: servey.uniqueKey,
-      name: servey.name || '',
-      imageUrl: servey.imageUrl || '',
-      contents: (servey.contents as SurveyQuestionEntity[]) || [],
+      uniqueKey: survey.uniqueKey,
+      name: survey.name || '',
+      imageUrl: survey.imageUrl || '',
+      contents: (survey.contents as SurveyQuestionEntity[]) || [],
     }
     return NextResponse.json(surveyEntity, { status: 200 })
   } catch (error) {
@@ -87,7 +87,7 @@ export async function POST(
 
     // TODO you already answerd
 
-    const answer = await prisma.servey.create({
+    const answer = await prisma.survey.create({
       data: {
         uniqueKey: generateHashId(),
         name,

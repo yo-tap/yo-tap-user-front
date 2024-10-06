@@ -4,7 +4,7 @@ import { SurveyEntity } from '@/types/Survey'
 import { signInAnonymously } from 'firebase/auth'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
+export const useAnswerSurveyScreen = (surveyEntity: SurveyEntity) => {
   const [baloons, setBaloons] = useState<
     {
       id: number
@@ -75,7 +75,7 @@ export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
 
         const newAnsweredContent: AnsweredContent = {
           uniqueKey: surveyEntity.contents[counter].uniqueKey,
-          serveyTitle: surveyEntity.contents[counter].title,
+          surveyTitle: surveyEntity.contents[counter].title,
           answer: 'right',
           answeredLabelString: `${surveyEntity.contents[counter].answerRight.label}`,
           point: surveyEntity.contents[counter].answerRight.point,
@@ -104,7 +104,7 @@ export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
 
         const newAnsweredContent: AnsweredContent = {
           uniqueKey: surveyEntity.contents[counter].uniqueKey,
-          serveyTitle: surveyEntity.contents[counter].title,
+          surveyTitle: surveyEntity.contents[counter].title,
           answer: 'left',
           answeredLabelString: `${surveyEntity.contents[counter].answerLeft.label}`,
           point: surveyEntity.contents[counter].answerLeft.point,

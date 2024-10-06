@@ -1,6 +1,6 @@
 export type AnsweredContent = {
   uniqueKey: string
-  serveyTitle: string
+  surveyTitle: string
   answer: 'left' | 'right'
   answeredLabelString: string
   point: number

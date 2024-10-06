@@ -45,7 +45,7 @@ model Answer {
   updatedAt DateTime @updatedAt @map("updated_at")
   createdAt DateTime @default(now()) @map("created_at")
 
-  Survey Survey @relation(fields: [SurveyId], references: [id])
+  survey Survey @relation(fields: [SurveyId], references: [id])
   user   User   @relation(fields: [userId], references: [id])
 
   @@unique([uniqueKey])
@@ -64,7 +64,7 @@ model User {
   createdAt DateTime @default(now()) @map("created_at")
 
   answers Answer[]
-  Survey  Survey[]
+  survey  Survey[]
 
   @@unique([uniqueKey])
   @@unique([firebaseUid])

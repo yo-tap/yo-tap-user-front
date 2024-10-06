@@ -1,5 +1,4 @@
-'use '
-import { OAnswerServeyScreen } from '@/components/04_screens/OAnswerServeyScreen'
+import { SAnswerSurveyScreen } from '@/components/04_screens/SAnswerServeyScreen'
 import { SurveyEntity } from '@/types/Survey'
 import { notFound } from 'next/navigation'
 
@@ -11,7 +10,7 @@ const Page = async ({
   }
 }) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_HOSTING_URL}/api/serveys/${params.uniqueKey}`,
+    `${process.env.NEXT_PUBLIC_HOSTING_URL}/api/surveys/${params.uniqueKey}`,
     { cache: 'no-store' }
   )
   const surveyEntity: SurveyEntity = await response.json()
@@ -22,7 +21,7 @@ const Page = async ({
 
   return (
     <>
-      <OAnswerServeyScreen surveyEntity={surveyEntity} />
+      <SAnswerSurveyScreen surveyEntity={surveyEntity} />
     </>
   )
 }
