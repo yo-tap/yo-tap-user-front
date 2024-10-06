@@ -11,11 +11,13 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
       label: '興味ある',
       align: 'center',
       point: 5,
+      pointUpEffectBgColor: '#00FF00', // 緑色のエフェクト
     },
     answerRight: {
       label: '興味ない',
       align: 'center',
       point: 5,
+      pointUpEffectBgColor: '#FF0000', // 赤色のエフェクト
     },
   },
   {
@@ -29,11 +31,13 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
       label: 'とても魅力的',
       align: 'left',
       point: 5,
+      pointUpEffectBgColor: '#FFD700', // ゴールドのエフェクト
     },
     answerRight: {
       label: 'あまり魅力を感じない',
       align: 'right',
       point: 5,
+      pointUpEffectBgColor: '#808080', // グレーのエフェクト
     },
   },
   {
@@ -47,11 +51,13 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
       label: '高く評価する',
       align: 'center',
       point: 5,
+      pointUpEffectBgColor: '#00FF7F', // 春の緑のエフェクト
     },
     answerRight: {
       label: 'あまり評価しない',
       align: 'center',
       point: 5,
+      pointUpEffectBgColor: '#FFA500', // オレンジ色のエフェクト
     },
   },
   {
@@ -65,11 +71,13 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
       label: '関心がある',
       align: 'left',
       point: 5,
+      pointUpEffectBgColor: '#32CD32', // ライムグリーンのエフェクト
     },
     answerRight: {
       label: '関心がない',
       align: 'right',
       point: 5,
+      pointUpEffectBgColor: '#DC143C', // クリムゾンのエフェクト
     },
   },
   {
@@ -83,11 +91,13 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
       label: '高まる',
       align: 'center',
       point: 5,
+      pointUpEffectBgColor: '#1E90FF', // ドジャーブルーのエフェクト
     },
     answerRight: {
       label: 'あまり変わらない',
       align: 'center',
       point: 5,
+      pointUpEffectBgColor: '#696969', // ディムグレーのエフェクト
     },
   },
   {
@@ -101,11 +111,13 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
       label: 'はい、学びたい',
       align: 'left',
       point: 5,
+      pointUpEffectBgColor: '#0000FF', // 青色のエフェクト
     },
     answerRight: {
       label: 'いいえ、特に必要ない',
       align: 'right',
       point: 5,
+      pointUpEffectBgColor: '#8B0000', // ダークレッドのエフェクト
     },
   },
   {
@@ -119,11 +131,13 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
       label: '重要だと思う',
       align: 'center',
       point: 5,
+      pointUpEffectBgColor: '#00CED1', // ダークターコイズのエフェクト
     },
     answerRight: {
       label: '重要だと思わない',
       align: 'center',
       point: 5,
+      pointUpEffectBgColor: '#A9A9A9', // ダークグレーのエフェクト
     },
   },
   {
@@ -136,18 +150,19 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
       label: '使いたい',
       align: 'left',
       point: 5,
+      pointUpEffectBgColor: '#7FFF00', // チャートリューズのエフェクト
     },
     answerRight: {
       label: '使いたくない',
       align: 'right',
       point: 5,
+      pointUpEffectBgColor: '#FF4500', // オレンジレッドのエフェクト
     },
   },
   {
     uniqueKey: 'sns_share_009',
     title:
       'SNSでアンケートをシェアし、他のユーザーの回答を見ることに興味はありますか？',
-
     bgImageUrl: '/assets/images/_sample/q-v2/_sample_q-v2-03.png',
     bgColor: '#f5f5f5',
     layout: '1col',
@@ -155,11 +170,13 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
       label: '興味がある',
       align: 'center',
       point: 5,
+      pointUpEffectBgColor: '#40E0D0', // ターコイズのエフェクト
     },
     answerRight: {
       label: '興味がない',
       align: 'center',
       point: 5,
+      pointUpEffectBgColor: '#B22222', // ファイアブリックのエフェクト
     },
   },
   {
@@ -173,11 +190,13 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
       label: '共感する',
       align: 'left',
       point: 5,
+      pointUpEffectBgColor: '#ADFF2F', // グリーンイエローのエフェクト
     },
     answerRight: {
       label: 'あまり共感しない',
       align: 'right',
       point: 5,
+      pointUpEffectBgColor: '#B0C4DE', // ライトスチールブルーのエフェクト
     },
   },
 ]

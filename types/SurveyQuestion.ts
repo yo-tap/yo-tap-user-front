@@ -12,6 +12,7 @@ type AnswerLabel = {
   label: string
   align: 'left' | 'right' | 'center'
   point: number
+  pointUpEffectBgColor?: string
 }
 
 // - 質問タイトル

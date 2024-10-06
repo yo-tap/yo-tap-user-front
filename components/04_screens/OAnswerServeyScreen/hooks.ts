@@ -60,7 +60,9 @@ export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
             y: swiper.touches.startY - 120,
             review,
             message: surveyEntity.contents[counter].answerRight.label || '',
-            bgColor: 'red',
+            bgColor:
+              surveyEntity.contents[counter].answerLeft.pointUpEffectBgColor ||
+              'red',
           },
         ])
       } else {
@@ -75,7 +77,9 @@ export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
             y: swiper.touches.startY - 120,
             review,
             message: surveyEntity.contents[counter].answerLeft.label || '',
-            bgColor: 'blue',
+            bgColor:
+              surveyEntity.contents[counter].answerLeft.pointUpEffectBgColor ||
+              'blue',
           },
         ])
       }
