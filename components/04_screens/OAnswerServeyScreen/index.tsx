@@ -7,19 +7,30 @@ import { CardSwiper } from '@/components/CardSwiper'
 import { Box } from '@mantine/core'
 import { FC, memo } from 'react'
 import { useAnswerServeyScreen } from './hooks'
+import { SurveyEntity } from '@/types/Survey'
+import { surveyEntityMock } from '@/mocks/surveyEntity.mock'
 
-const Component: FC = () => {
-  const { baloons, point, counter, swiped, reviewableContents } =
-    useAnswerServeyScreen()
+type Props = {
+  surveyEntity: SurveyEntity
+}
+
+const Component: FC<Props> = ({ surveyEntity }) => {
+  const { baloons, point, counter, swiped } =
+    useAnswerServeyScreen(surveyEntityMock)
+
+  console.log('surveyEntity-------------', surveyEntity)
 
   return (
     <div>
       <ONavBar point={point} />
       <OContinuousProgress
-        contentsLength={reviewableContents.length}
+        contentsLength={surveyEntityMock.contents.length}
         currentContentIndex={counter}
       />
-      <CardSwiper reviewableContents={reviewableContents} onSwiped={swiped} />
+      <CardSwiper
+        surveyQuestions={surveyEntityMock.contents}
+        onSwiped={swiped}
+      />
 
       {baloons.map((baloon) => (
         <Box

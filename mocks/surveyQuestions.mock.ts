@@ -1,0 +1,183 @@
+import { SurveyQuestionEntity } from '@/types/SurveyQuestion'
+
+export const surveyQuestionsMock: SurveyQuestionEntity[] = [
+  {
+    uniqueKey: 'web3_interest_001',
+    title: 'Web3を活用したアンケートアプリに興味はありますか？',
+    bgImageUrl: '/assets/images/_sample/q-v2/_sample_q-v2-03.png',
+    bgColor: '#ffffff',
+    layout: '1col',
+    answerLeft: {
+      label: '興味ある',
+      align: 'center',
+      point: 5,
+    },
+    answerRight: {
+      label: '興味ない',
+      align: 'center',
+      point: 5,
+    },
+  },
+  {
+    uniqueKey: 'token_reward_002',
+    title:
+      'アンケートに答えることでトークンを獲得する仕組みは魅力的だと思いますか？',
+    bgImageUrl: '/assets/images/_sample/q-v2/_sample_q-v2-03.png',
+    bgColor: '#f0f0f0',
+    layout: '2col',
+    answerLeft: {
+      label: 'とても魅力的',
+      align: 'left',
+      point: 5,
+    },
+    answerRight: {
+      label: 'あまり魅力を感じない',
+      align: 'right',
+      point: 5,
+    },
+  },
+  {
+    uniqueKey: 'easy_ui_003',
+    title:
+      'YoTAPの簡単な操作（スワイプして答える）で報酬を得られる点をどの程度評価しますか？',
+    bgImageUrl: '/assets/images/_sample/q-v2/_sample_q-v2-03.png',
+    bgColor: '#ffffff',
+    layout: '1col',
+    answerLeft: {
+      label: '高く評価する',
+      align: 'center',
+      point: 5,
+    },
+    answerRight: {
+      label: 'あまり評価しない',
+      align: 'center',
+      point: 5,
+    },
+  },
+  {
+    uniqueKey: 'realtime_participation_004',
+    title:
+      '他のユーザーと一緒にリアルタイムでアンケートに参加することに関心はありますか？',
+    bgImageUrl: '/assets/images/_sample/q-v2/_sample_q-v2-03.png',
+    bgColor: '#e0e0e0',
+    layout: '2col',
+    answerLeft: {
+      label: '関心がある',
+      align: 'left',
+      point: 5,
+    },
+    answerRight: {
+      label: '関心がない',
+      align: 'right',
+      point: 5,
+    },
+  },
+  {
+    uniqueKey: 'point_system_005',
+    title:
+      'アンケートを回答するためのポイントシステムがある場合、参加する意欲は高まりますか？',
+    bgImageUrl: '/assets/images/_sample/q-v2/_sample_q-v2-03.png',
+    bgColor: '#ffffff',
+    layout: '1col',
+    answerLeft: {
+      label: '高まる',
+      align: 'center',
+      point: 5,
+    },
+    answerRight: {
+      label: 'あまり変わらない',
+      align: 'center',
+      point: 5,
+    },
+  },
+  {
+    uniqueKey: 'knowledge_gain_006',
+    title:
+      'アンケートの内容に基づいて知識を得ることを目的に参加したいと思いますか？',
+    bgImageUrl: '/assets/images/_sample/q-v2/_sample_q-v2-03.png',
+    bgColor: '#e6e6e6',
+    layout: '2col',
+    answerLeft: {
+      label: 'はい、学びたい',
+      align: 'left',
+      point: 5,
+    },
+    answerRight: {
+      label: 'いいえ、特に必要ない',
+      align: 'right',
+      point: 5,
+    },
+  },
+  {
+    uniqueKey: 'instant_payment_007',
+    title:
+      'アンケートに関して、報酬の支払いが即時で行われることは重要だと思いますか？',
+    bgImageUrl: '/assets/images/_sample/q-v2/_sample_q-v2-03.png',
+    bgColor: '#d9f2e6',
+    layout: '1col',
+    answerLeft: {
+      label: '重要だと思う',
+      align: 'center',
+      point: 5,
+    },
+    answerRight: {
+      label: '重要だと思わない',
+      align: 'center',
+      point: 5,
+    },
+  },
+  {
+    uniqueKey: 'pwa_usage_008',
+    title: 'スマートフォンで利用できるPWAとしてYoTAPを使いたいと思いますか？',
+    bgImageUrl: '/assets/images/_sample/q-v2/_sample_q-v2-03.png',
+    bgColor: '#ffffff',
+    layout: '2col',
+    answerLeft: {
+      label: '使いたい',
+      align: 'left',
+      point: 5,
+    },
+    answerRight: {
+      label: '使いたくない',
+      align: 'right',
+      point: 5,
+    },
+  },
+  {
+    uniqueKey: 'sns_share_009',
+    title:
+      'SNSでアンケートをシェアし、他のユーザーの回答を見ることに興味はありますか？',
+
+    bgImageUrl: '/assets/images/_sample/q-v2/_sample_q-v2-03.png',
+    bgColor: '#f5f5f5',
+    layout: '1col',
+    answerLeft: {
+      label: '興味がある',
+      align: 'center',
+      point: 5,
+    },
+    answerRight: {
+      label: '興味がない',
+      align: 'center',
+      point: 5,
+    },
+  },
+  {
+    uniqueKey: 'web3_vision_010',
+    title:
+      'YoTAPのビジョンである『Web3による民主化された金融と社会貢献』に共感しますか？',
+    bgImageUrl: '/assets/images/_sample/q-v2/_sample_q-v2-03.png',
+    bgColor: '#ffffff',
+    layout: '2col',
+    answerLeft: {
+      label: '共感する',
+      align: 'left',
+      point: 5,
+    },
+    answerRight: {
+      label: 'あまり共感しない',
+      align: 'right',
+      point: 5,
+    },
+  },
+]

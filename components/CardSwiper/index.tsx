@@ -1,5 +1,5 @@
 'use client'
-import { ReviewableContent } from '@/types/ReviewableContent.js'
+import { SurveyQuestionEntity } from '@/types/SurveyQuestion.js'
 import { Box, Flex } from '@mantine/core'
 import Image from 'next/image.js'
 import { FC } from 'react'
@@ -8,11 +8,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import EffectTinder from './effect-tinder.esm.js'
 
 type Props = {
-  reviewableContents: ReviewableContent[]
+  surveyQuestions: SurveyQuestionEntity[]
   onSwiped: (swiper: any) => void
 }
 
-const Component: FC<Props> = ({ reviewableContents, onSwiped }) => {
+const Component: FC<Props> = ({ surveyQuestions, onSwiped }) => {
   const swiperStyle = {
     display: 'flex',
     justifyContent: 'center',
@@ -32,10 +32,15 @@ const Component: FC<Props> = ({ reviewableContents, onSwiped }) => {
             onSwiped(swiper)
           }}
         >
-          {reviewableContents.map((content, index) => {
+          {surveyQuestions.map((sq, index) => {
             return (
               <SwiperSlide key={index} style={swiperStyle}>
-                <SwiperSlideWrapper imageUri={content.imageUrl} />
+                <SwiperSlideWrapper
+                  imageUri={
+                    sq.bgImageUrl ||
+                    '/assets/images/_sample/q-v2/_sample_q-v2-01.png'
+                  }
+                />
               </SwiperSlide>
             )
           })}
