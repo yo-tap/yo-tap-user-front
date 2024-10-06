@@ -22,6 +22,9 @@ export const useAnswerSurveyScreen = (surveyEntity: SurveyEntity) => {
     []
   )
 
+  // TODO: すでに回答済みかどうかの状態でハンドリングする
+  const [isAnswered, setIsAnswered] = useState(false)
+
   const [counter, setCounter] = useState(0)
 
   const likedSoundRef = useRef<HTMLAudioElement | null>(null)
@@ -36,18 +39,8 @@ export const useAnswerSurveyScreen = (surveyEntity: SurveyEntity) => {
       // sign in anonymously
       const userCredential = await signInAnonymously(auth)
       const jwt = await userCredential.user.getIdToken()
-      const response = await fetch('/api/users', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${jwt}`, // JWT を Authorization ヘッダーにセット
-        },
-      })
 
-      // answerがあるか
-      console.log('response-------------', response)
-
-      const isAnswered = await fetch(
+      const isAlreadyAnswered = await fetch(
         `/api/surveys/${surveyEntity.uniqueKey}/answers`,
         {
           method: 'GET',
@@ -58,7 +51,7 @@ export const useAnswerSurveyScreen = (surveyEntity: SurveyEntity) => {
         }
       )
 
-      console.log('isAnswered-------------', isAnswered)
+      if (isAlreadyAnswered.status === 200) setIsAnswered(true)
     })()
   }, [])
 
@@ -137,5 +130,13 @@ export const useAnswerSurveyScreen = (surveyEntity: SurveyEntity) => {
     [counter, point, surveyEntity.contents, reviewedAmount, answeredContents]
   )
 
-  return { baloons, point, reviewedAmount, counter, swiped, answeredContents }
+  return {
+    baloons,
+    point,
+    reviewedAmount,
+    counter,
+    swiped,
+    answeredContents,
+    isAnswered,
+  }
 }

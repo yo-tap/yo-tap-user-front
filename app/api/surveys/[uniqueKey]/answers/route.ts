@@ -30,13 +30,21 @@ export async function GET(
     const decodedToken = await adminAuth.verifyIdToken(idToken)
     const uid = decodedToken.uid
 
-    const user = await prisma.user.findUnique({
+    let user: User
+    const existsUser = await prisma.user.findUnique({
       where: {
         firebaseUid: uid,
       },
     })
-    if (!user) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 })
+    if (!existsUser) {
+      user = await prisma.user.create({
+        data: {
+          uniqueKey: generateHashId(),
+          firebaseUid: uid,
+        },
+      })
+    } else {
+      user = existsUser
     }
 
     const survey = await prisma.survey.findUnique({
