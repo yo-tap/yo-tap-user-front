@@ -71,8 +71,6 @@ export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
           },
         ])
 
-        console.log('answerRight', surveyEntity.contents[counter].title)
-
         const newAnsweredContent: AnsweredContent = {
           uniqueKey: surveyEntity.contents[counter].uniqueKey,
           serveyTitle: surveyEntity.contents[counter].title,

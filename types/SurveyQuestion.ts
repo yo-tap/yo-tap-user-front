@@ -1,8 +1,6 @@
-import { ReactNode } from 'react'
-
 export type SurveyQuestionEntity = {
   uniqueKey: string // Answerと照合させるためのキー
-  title: ReactNode // 質問タイトル
+  title: string // 質問タイトル
   bgImageUrl?: string // 画像
   bgColor: string // 背景色 画像の上に被せる
   c?: string // 質問タイトルの色
@@ -20,7 +18,7 @@ export type SurveyQuestionEntity = {
 }
 
 export type AnswerLabel = {
-  label: ReactNode // YES NOのラベル
+  label: string // YES NOのラベル
   point: number // ポイント
   pointUpEffectBgColor?: string // ポイントアップ時のエフェクト
   ff?: string // フォント

@@ -1,6 +1,7 @@
-'use server'
+'use '
 import { OAnswerServeyScreen } from '@/components/04_screens/OAnswerServeyScreen'
 import { SurveyEntity } from '@/types/Survey'
+import { notFound } from 'next/navigation'
 
 const Page = async ({
   params,
@@ -10,12 +11,13 @@ const Page = async ({
   }
 }) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_HOSTING_URL}/api/serveys/${params.uniqueKey}`
+    `${process.env.NEXT_PUBLIC_HOSTING_URL}/api/serveys/${params.uniqueKey}`,
+    { cache: 'no-store' }
   )
   const surveyEntity: SurveyEntity = await response.json()
 
-  if (!surveyEntity) {
-    return <div>Survey not found</div>
+  if (!surveyEntity || !surveyEntity.uniqueKey) {
+    return notFound()
   }
 
   return (

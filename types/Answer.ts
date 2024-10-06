@@ -1,8 +1,6 @@
-import { ReactNode } from 'react'
-
 export type AnsweredContent = {
   uniqueKey: string
-  serveyTitle: ReactNode
+  serveyTitle: string
   answer: 'left' | 'right'
   answeredLabelString: string
   point: number

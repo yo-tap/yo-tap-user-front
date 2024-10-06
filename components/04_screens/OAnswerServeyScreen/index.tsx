@@ -5,7 +5,6 @@ import { OAnswerComplete } from '@/components/02_organisms/OAnswerComplete'
 import { OContinuousProgress } from '@/components/02_organisms/OContinuousProgress'
 import { ONavBar } from '@/components/02_organisms/ONavBar'
 import { CardSwiper } from '@/components/CardSwiper'
-import { surveyEntityMock } from '@/mocks/surveyEntity.mock'
 import { SurveyEntity } from '@/types/Survey'
 import { Box } from '@mantine/core'
 import { FC, memo } from 'react'
@@ -17,25 +16,19 @@ type Props = {
 
 const Component: FC<Props> = ({ surveyEntity }) => {
   const { baloons, point, counter, swiped, answeredContents } =
-    useAnswerServeyScreen(surveyEntityMock)
-
-  console.log('answeredContents-------------', answeredContents)
+    useAnswerServeyScreen(surveyEntity)
 
   return (
     <div>
       <ONavBar point={point} />
       <OContinuousProgress
-        contentsLength={surveyEntityMock.contents.length}
+        contentsLength={surveyEntity.contents.length}
         currentContentIndex={counter}
       />
-      {answeredContents.length === surveyEntityMock.contents.length ? (
+      {answeredContents.length === surveyEntity.contents.length ? (
         <OAnswerComplete point={point} />
       ) : (
-        <CardSwiper
-          surveyQuestions={surveyEntityMock.contents}
-          onSwiped={swiped}
-          answeredComponent={<></>}
-        />
+        <CardSwiper surveyQuestions={surveyEntity.contents} onSwiped={swiped} />
       )}
 
       {baloons.map((baloon) => (

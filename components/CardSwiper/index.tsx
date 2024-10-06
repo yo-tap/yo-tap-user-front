@@ -10,7 +10,7 @@ import EffectTinder from './effect-tinder.esm.js'
 
 type Props = {
   surveyQuestions: SurveyQuestionEntity[]
-  answeredComponent: ReactNode
+  answeredComponent?: ReactNode
   onSwiped: (swiper: any) => void
 }
 
@@ -117,7 +117,7 @@ const SwiperSlideWrapper: FC<SwiperSlideWrapperProps> = ({ sq }) => {
               lh={sq.lh || 1.5}
               c={sq.c || 'white'}
               className={sq.ff ? getFontClass(sq.ff) : undefined}
-              style={{ zIndex: 10 }}
+              style={{ zIndex: 10, whiteSpace: 'pre-wrap' }}
             >
               {sq.title}
             </Text>
@@ -207,10 +207,10 @@ const AnsweredComponent: FC<AnsweredProps> = ({ children }) => {
       <Flex w={458} h={620} pos="relative" justify="center">
         <Box
           w={358}
-          // h={500}
+          h={500}
           style={{
             backgroundColor: 'white',
-            // boxShadow: '0px 10px 44px rgba(0,0,0,0.06)!important',
+            boxShadow: '0px 10px 44px rgba(0,0,0,0.06)!important',
             borderRadius: '16px',
             overflow: 'hidden',
           }}

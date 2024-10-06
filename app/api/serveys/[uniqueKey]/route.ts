@@ -11,13 +11,13 @@ export async function GET(
   _: NextRequest,
   { params }: { params: { uniqueKey: string } }
 ) {
-  console.log('paramsX-----------', params)
   try {
     const servey = await prisma.servey.findUnique({
       where: {
         uniqueKey: params.uniqueKey,
       },
     })
+
     if (!servey) {
       return NextResponse.json({ error: 'Survey not found' }, { status: 404 })
     }
@@ -44,7 +44,6 @@ export async function POST(
 ) {
   try {
     const { id } = params
-    console.log('Survey ID:', id)
 
     const authHeader = request.headers.get('Authorization')
     if (!authHeader) {
@@ -55,7 +54,6 @@ export async function POST(
     }
 
     const idToken = authHeader.split('Bearer ')[1]
-    console.log('ID token:--------------', idToken)
     if (!idToken) {
       return NextResponse.json(
         { error: 'Invalid Authorization header format' },

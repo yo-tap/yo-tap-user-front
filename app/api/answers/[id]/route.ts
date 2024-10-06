@@ -11,7 +11,6 @@ export async function GET(
 ) {
   try {
     const { id } = params
-    console.log('Answer ID:', id)
 
     const authHeader = request.headers.get('Authorization')
     if (!authHeader) {
@@ -22,7 +21,6 @@ export async function GET(
     }
 
     const idToken = authHeader.split('Bearer ')[1]
-    console.log('ID token:--------------', idToken)
     if (!idToken) {
       return NextResponse.json(
         { error: 'Invalid Authorization header format' },
@@ -68,8 +66,6 @@ export async function GET(
         },
       },
     })
-
-    console.log('Answer:', answer)
 
     return NextResponse.json(
       { message: `Survey ID: ${id} fetched successfully` },
