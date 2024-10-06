@@ -46,6 +46,19 @@ export const useAnswerSurveyScreen = (surveyEntity: SurveyEntity) => {
 
       // answerがあるか
       console.log('response-------------', response)
+
+      const isAnswered = await fetch(
+        `/api/surveys/${surveyEntity.uniqueKey}/answers`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${jwt}`, // JWT を Authorization ヘッダーにセット
+          },
+        }
+      )
+
+      console.log('isAnswered-------------', isAnswered)
     })()
   }, [])
 

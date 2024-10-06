@@ -38,19 +38,21 @@ model Answer {
   uniqueKey String @map("unique_key") @db.VarChar(255)
 
   userId   Int @map("user_id")
-  SurveyId Int @map("Survey_id")
+  surveyId Int @map("survey_id")
 
   contents Json?
 
   updatedAt DateTime @updatedAt @map("updated_at")
   createdAt DateTime @default(now()) @map("created_at")
 
-  survey Survey @relation(fields: [SurveyId], references: [id])
+  survey Survey @relation(fields: [surveyId], references: [id])
   user   User   @relation(fields: [userId], references: [id])
 
   @@unique([uniqueKey])
+  @@unique([userId, surveyId])
   @@index([uniqueKey], name: "answers_unique_key")
   @@index([userId], name: "answers_user_id")
+  @@index([surveyId], name: "answers_survey_id")
   @@map("answers")
 }
 

@@ -28,6 +28,7 @@ export async function GET(
       imageUrl: survey.imageUrl || '',
       contents: (survey.contents as SurveyQuestionEntity[]) || [],
     }
+
     return NextResponse.json(surveyEntity, { status: 200 })
   } catch (error) {
     console.error('Error fetching survey:', error)
