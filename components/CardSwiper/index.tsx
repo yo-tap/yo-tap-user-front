@@ -207,10 +207,10 @@ const AnsweredComponent: FC<AnsweredProps> = ({ children }) => {
       <Flex w={458} h={620} pos="relative" justify="center">
         <Box
           w={358}
-          h={500}
+          // h={500}
           style={{
             backgroundColor: 'white',
-            boxShadow: '0px 10px 44px rgba(0,0,0,0.06)!important',
+            // boxShadow: '0px 10px 44px rgba(0,0,0,0.06)!important',
             borderRadius: '16px',
             overflow: 'hidden',
           }}

@@ -1,4 +1,4 @@
-import { Noto_Sans_JP, Shrikhand } from 'next/font/google'
+import { Inter, Noto_Sans_JP, Shrikhand } from 'next/font/google'
 
 export const fontShrikhand = Shrikhand({
   weight: ['400'],
@@ -9,6 +9,13 @@ export const fontShrikhand = Shrikhand({
 export const fontNotoSansJp = Noto_Sans_JP({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   display: 'swap',
+  subsets: ['latin'],
+})
+
+export const fontInterItalic = Inter({
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  style: 'italic',
   subsets: ['latin'],
 })
 

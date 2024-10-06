@@ -28,8 +28,9 @@ export default function RootLayout({
             <Box
               maw="100vw"
               mah="100vh"
+              pb={86} // counter padding of logo height
               pos="relative"
-              style={{ overflow: 'hidden' }}
+              style={{ overflowX: 'hidden' }}
             >
               {children}
             </Box>

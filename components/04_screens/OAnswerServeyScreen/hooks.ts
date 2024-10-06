@@ -1,4 +1,5 @@
 import { auth } from '@/lib/firebase'
+import { AnsweredContent } from '@/types/Answer'
 import { SurveyEntity } from '@/types/Survey'
 import { signInAnonymously } from 'firebase/auth'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -17,6 +18,10 @@ export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
   >([])
   const [point, setPoint] = useState(0)
   const [reviewedAmount, setReviewedAmount] = useState(0)
+  const [answeredContents, setAnsweredContents] = useState<AnsweredContent[]>(
+    []
+  )
+
   const [counter, setCounter] = useState(0)
 
   const likedSoundRef = useRef<HTMLAudioElement | null>(null)
@@ -25,8 +30,8 @@ export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
   useEffect(() => {
     ;(async () => {
       // setup sound
-      likedSoundRef.current = new Audio('/assets/sounds/liked.mp3')
-      noopsSoundRef.current = new Audio('/assets/sounds/noops2.wav')
+      // likedSoundRef.current = new Audio('/assets/sounds/liked.mp3')
+      // noopsSoundRef.current = new Audio('/assets/sounds/noops2.wav')
 
       // sign in anonymously
       const userCredential = await signInAnonymously(auth)
@@ -65,6 +70,18 @@ export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
               'red',
           },
         ])
+
+        console.log('answerRight', surveyEntity.contents[counter].title)
+
+        const newAnsweredContent: AnsweredContent = {
+          uniqueKey: surveyEntity.contents[counter].uniqueKey,
+          serveyTitle: surveyEntity.contents[counter].title,
+          answer: 'right',
+          answeredLabelString: `${surveyEntity.contents[counter].answerRight.label}`,
+          point: surveyEntity.contents[counter].answerRight.point,
+          answeredAt: new Date(),
+        }
+        setAnsweredContents([...answeredContents, newAnsweredContent])
       } else {
         noopsSoundRef.current?.play()
         setPoint(point + surveyEntity.contents[counter].answerLeft.point)
@@ -84,6 +101,16 @@ export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
               'blue',
           },
         ])
+
+        const newAnsweredContent: AnsweredContent = {
+          uniqueKey: surveyEntity.contents[counter].uniqueKey,
+          serveyTitle: surveyEntity.contents[counter].title,
+          answer: 'left',
+          answeredLabelString: `${surveyEntity.contents[counter].answerLeft.label}`,
+          point: surveyEntity.contents[counter].answerLeft.point,
+          answeredAt: new Date(),
+        }
+        setAnsweredContents([...answeredContents, newAnsweredContent])
       }
 
       setReviewedAmount(reviewedAmount + 1)
@@ -94,8 +121,8 @@ export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
         setBaloons((prev) => prev.filter((baloon) => baloon.id !== counter))
       }, 1 * 1000)
     },
-    [counter, point, surveyEntity.contents, reviewedAmount]
+    [counter, point, surveyEntity.contents, reviewedAmount, answeredContents]
   )
 
-  return { baloons, point, reviewedAmount, counter, swiped }
+  return { baloons, point, reviewedAmount, counter, swiped, answeredContents }
 }
