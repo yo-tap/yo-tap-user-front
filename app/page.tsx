@@ -1,13 +1,13 @@
 'use client'
 import { ERippleEffect } from '@/components/01_elements/ERippleEffect'
 import { OAddPointBaloon } from '@/components/02_organisms/OAddPointBaloon'
-import { OCounter } from '@/components/02_organisms/OCounter'
+import { OContinuousProgress } from '@/components/02_organisms/OContinuousProgress'
+import { ONavBar } from '@/components/02_organisms/ONavBar'
 import { CardSwiper } from '@/components/CardSwiper'
 import { auth } from '@/lib/firebase'
 import { ReviewableContent } from '@/types/ReviewableContent'
-import { Box, Flex, Progress } from '@mantine/core'
+import { Box } from '@mantine/core'
 import { signInAnonymously } from 'firebase/auth'
-import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
 // app/page.tsx
@@ -104,49 +104,19 @@ const Page = () => {
 
   return (
     <div>
-      <Flex h={56} px={24} justify="space-between">
-        <Flex align="center">
-          <Image
-            src="/assets/images/logo/logo_yotap_red.svg"
-            width={80}
-            height={16}
-            alt="Yotap logo"
-          />
-        </Flex>
-        <Flex align="center">
-          <Image
-            src="/assets/images/ticker/ticker_yo.png"
-            width={20}
-            height={20}
-            alt="Yotap ticker"
-          />
+      {/* Header */}
+      <ONavBar point={point} />
 
-          <Flex pl={8} pt={3}>
-            <OCounter
-              rollSpeed={2}
-              initialRollAnimation={false}
-              fz={16}
-              num={point}
-            />
-          </Flex>
-        </Flex>
-      </Flex>
+      {/* Progress */}
+      <OContinuousProgress
+        contentsLength={reviewableContents.length}
+        currentContentIndex={counter}
+      />
 
-      <Flex h={3} align="top" justify="left">
-        {Array.from({ length: reviewableContents.length }, (_, i) => (
-          <Progress
-            key={i}
-            w={`${100 / reviewableContents.length}%`}
-            h={2}
-            mx={1}
-            value={reviewedAmount > i ? 100 : 0}
-            color="red"
-          />
-        ))}
-      </Flex>
-
+      {/* CardSwiper */}
       <CardSwiper reviewableContents={reviewableContents} onSwiped={swiped} />
 
+      {/* Baloon */}
       {baloons.map((baloon) => (
         <>
           <Box
