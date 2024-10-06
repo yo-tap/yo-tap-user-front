@@ -21,7 +21,6 @@ const Page = async ({
   return (
     <>
       <OAnswerServeyScreen surveyEntity={surveyEntity} />
-      <div>{surveyEntity.name}</div>
     </>
   )
 }

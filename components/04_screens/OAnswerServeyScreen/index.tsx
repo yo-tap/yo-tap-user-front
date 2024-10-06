@@ -30,6 +30,7 @@ const Component: FC<Props> = ({ surveyEntity }) => {
       <CardSwiper
         surveyQuestions={surveyEntityMock.contents}
         onSwiped={swiped}
+        answeredComponent={<div>Answered</div>}
       />
 
       {baloons.map((baloon) => (

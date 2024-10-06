@@ -3,17 +3,22 @@ import { AnswerLabel, SurveyQuestionEntity } from '@/types/SurveyQuestion.js'
 import { getFontClass } from '@/utils/fonts'
 import { Box, Flex, Text } from '@mantine/core'
 import Image from 'next/image.js'
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import 'swiper/css'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import EffectTinder from './effect-tinder.esm.js'
 
 type Props = {
   surveyQuestions: SurveyQuestionEntity[]
+  answeredComponent: ReactNode
   onSwiped: (swiper: any) => void
 }
 
-const Component: FC<Props> = ({ surveyQuestions, onSwiped }) => {
+const Component: FC<Props> = ({
+  surveyQuestions,
+  answeredComponent,
+  onSwiped,
+}) => {
   const swiperStyle = {
     display: 'flex',
     justifyContent: 'center',
@@ -40,6 +45,9 @@ const Component: FC<Props> = ({ surveyQuestions, onSwiped }) => {
               </SwiperSlide>
             )
           })}
+          <SwiperSlide style={swiperStyle}>
+            <AnsweredComponent>{answeredComponent}</AnsweredComponent>
+          </SwiperSlide>
         </Swiper>
         <Flex>
           <button className="swiper-tinder-button swiper-tinder-button-no">
@@ -184,6 +192,33 @@ const AnswerLabelComponent: FC<AnswerLabelComponentProps> = ({
         >
           {answerLabel.label}
         </Text>
+      </Flex>
+    </>
+  )
+}
+
+type AnsweredProps = {
+  children: ReactNode
+}
+
+const AnsweredComponent: FC<AnsweredProps> = ({ children }) => {
+  return (
+    <>
+      <Flex w={458} h={620} pos="relative" justify="center">
+        <Box
+          w={358}
+          h={500}
+          style={{
+            backgroundColor: 'white',
+            boxShadow: '0px 10px 44px rgba(0,0,0,0.06)!important',
+            borderRadius: '16px',
+            overflow: 'hidden',
+          }}
+        >
+          <Box pos="relative" display="block" w={358} h={500}>
+            {children}
+          </Box>
+        </Box>
       </Flex>
     </>
   )
