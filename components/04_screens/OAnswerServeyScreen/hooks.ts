@@ -22,8 +22,6 @@ export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
   const likedSoundRef = useRef<HTMLAudioElement | null>(null)
   const noopsSoundRef = useRef<HTMLAudioElement | null>(null)
 
-  console.log('surveyEntity-------------', surveyEntity)
-
   useEffect(() => {
     ;(async () => {
       // setup sound
@@ -59,7 +57,9 @@ export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
             x: swiper.touches.startX,
             y: swiper.touches.startY - 120,
             review,
-            message: surveyEntity.contents[counter].answerRight.label || '',
+            message: String(
+              surveyEntity.contents[counter].answerRight.label || ''
+            ),
             bgColor:
               surveyEntity.contents[counter].answerLeft.pointUpEffectBgColor ||
               'red',
@@ -76,7 +76,9 @@ export const useAnswerServeyScreen = (surveyEntity: SurveyEntity) => {
             x: swiper.touches.startX,
             y: swiper.touches.startY - 120,
             review,
-            message: surveyEntity.contents[counter].answerLeft.label || '',
+            message: String(
+              surveyEntity.contents[counter].answerLeft.label || ''
+            ),
             bgColor:
               surveyEntity.contents[counter].answerLeft.pointUpEffectBgColor ||
               'blue',

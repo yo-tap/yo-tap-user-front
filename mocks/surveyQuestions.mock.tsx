@@ -3,10 +3,50 @@ import { SurveyQuestionEntity } from '@/types/SurveyQuestion'
 export const surveyQuestionsMock: SurveyQuestionEntity[] = [
   {
     uniqueKey: 'web3_interest_001',
-    title: 'Web3を活用したアンケートアプリに興味はありますか？',
-    bgImageUrl: '/assets/images/_sample/q-v2/_sample_q-v2-03.png',
-    bgColor: '#ffffff',
-    layout: '1col',
+    title: (
+      <>
+        Web3を活用した
+        <br />
+        アンケートアプリに
+        <br />
+        興味はありますか？
+      </>
+    ),
+    bgImageUrl: '/assets/images/01.jpg',
+    bgColor: 'rgba(0,0,0,0.6)',
+    layout: '2col',
+    ff: 'notoSansJP',
+    fz: 28,
+    answerLeft: {
+      label: '⬅️興味ある',
+      justify: 'center',
+      align: 'center',
+      point: 5,
+      pointUpEffectBgColor: '#00FF00', // 緑色のエフェクト
+      fz: 18,
+    },
+    answerRight: {
+      label: '興味ない➡️',
+      justify: 'center',
+      align: 'center',
+      point: 5,
+      pointUpEffectBgColor: '#FF0000', // 赤色のエフェクト
+      fz: 18,
+    },
+  },
+  {
+    uniqueKey: 'web3_interest_001',
+    title: (
+      <>
+        Are you interested
+        <br />
+        in a survey app utilizing Web3?
+      </>
+    ),
+    bgImageUrl: '/assets/images/02.jpg',
+    bgColor: 'rgba(0,0,0,0.5)',
+    layout: '2col',
+    ff: 'shrikhand',
     answerLeft: {
       label: '興味ある',
       align: 'center',
@@ -21,6 +61,33 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
     },
   },
   {
+    uniqueKey: 'web3_interest_001',
+    title: (
+      <>
+        Are you interested
+        <br />
+        in a survey app utilizing Web3?
+      </>
+    ),
+    bgImageUrl: '/assets/images/_sample/q-v2/_sample_q-v2-03.png',
+    bgColor: 'rgba(0,0,0,0.9)',
+    layout: '2col',
+    ff: 'shrikhand',
+    answerLeft: {
+      label: '興味ある',
+      align: 'center',
+      point: 5,
+      pointUpEffectBgColor: '#00FF00', // 緑色のエフェクト
+    },
+    answerRight: {
+      label: '興味ない',
+      align: 'center',
+      point: 5,
+      pointUpEffectBgColor: '#FF0000', // 赤色のエフェクト
+    },
+  },
+
+  {
     uniqueKey: 'token_reward_002',
     title:
       'アンケートに答えることでトークンを獲得する仕組みは魅力的だと思いますか？',
@@ -29,13 +96,13 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
     layout: '2col',
     answerLeft: {
       label: 'とても魅力的',
-      align: 'left',
+      align: 'start',
       point: 5,
       pointUpEffectBgColor: '#FFD700', // ゴールドのエフェクト
     },
     answerRight: {
       label: 'あまり魅力を感じない',
-      align: 'right',
+      align: 'end',
       point: 5,
       pointUpEffectBgColor: '#808080', // グレーのエフェクト
     },
@@ -69,13 +136,13 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
     layout: '2col',
     answerLeft: {
       label: '関心がある',
-      align: 'left',
+      align: 'start',
       point: 5,
       pointUpEffectBgColor: '#32CD32', // ライムグリーンのエフェクト
     },
     answerRight: {
       label: '関心がない',
-      align: 'right',
+      align: 'end',
       point: 5,
       pointUpEffectBgColor: '#DC143C', // クリムゾンのエフェクト
     },
@@ -109,13 +176,13 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
     layout: '2col',
     answerLeft: {
       label: 'はい、学びたい',
-      align: 'left',
+      align: 'start',
       point: 5,
       pointUpEffectBgColor: '#0000FF', // 青色のエフェクト
     },
     answerRight: {
       label: 'いいえ、特に必要ない',
-      align: 'right',
+      align: 'end',
       point: 5,
       pointUpEffectBgColor: '#8B0000', // ダークレッドのエフェクト
     },
@@ -148,13 +215,13 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
     layout: '2col',
     answerLeft: {
       label: '使いたい',
-      align: 'left',
+      align: 'start',
       point: 5,
       pointUpEffectBgColor: '#7FFF00', // チャートリューズのエフェクト
     },
     answerRight: {
       label: '使いたくない',
-      align: 'right',
+      align: 'end',
       point: 5,
       pointUpEffectBgColor: '#FF4500', // オレンジレッドのエフェクト
     },
@@ -188,13 +255,13 @@ export const surveyQuestionsMock: SurveyQuestionEntity[] = [
     layout: '2col',
     answerLeft: {
       label: '共感する',
-      align: 'left',
+      align: 'start',
       point: 5,
       pointUpEffectBgColor: '#ADFF2F', // グリーンイエローのエフェクト
     },
     answerRight: {
       label: 'あまり共感しない',
-      align: 'right',
+      align: 'end',
       point: 5,
       pointUpEffectBgColor: '#B0C4DE', // ライトスチールブルーのエフェクト
     },
