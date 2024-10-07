@@ -71,6 +71,7 @@ export async function GET(
 
     const answerEntity: AnswerEntity = {
       uniqueKey: answer.uniqueKey,
+      points: answer.points,
       contents: answer.contents as any,
     }
 
@@ -127,7 +128,7 @@ export async function POST(
 
     // リクエストボディから JSON データを取得
     const body = await request.json()
-    const { contents } = body
+    const { contents, points } = body
 
     const survey = await prisma.survey.findUnique({
       where: {
@@ -155,6 +156,7 @@ export async function POST(
       data: {
         uniqueKey: generateHashId(),
         contents: contents as any,
+        points: points,
         user: {
           connect: {
             id: user.id,
@@ -170,6 +172,7 @@ export async function POST(
 
     const answerEntity: AnswerEntity = {
       uniqueKey: createdAnswer.uniqueKey,
+      points: createdAnswer.points,
       contents: createdAnswer.contents as any,
     }
 

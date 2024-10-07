@@ -40,6 +40,7 @@ model Answer {
   userId   Int @map("user_id")
   surveyId Int @map("survey_id")
 
+  points Int @default(0)
   contents Json?
 
   updatedAt DateTime @updatedAt @map("updated_at")

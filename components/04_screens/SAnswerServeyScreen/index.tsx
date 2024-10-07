@@ -15,7 +15,7 @@ type Props = {
 }
 
 const Component: FC<Props> = ({ surveyEntity }) => {
-  const { baloons, point, counter, swiped, answeredContents } =
+  const { baloons, point, counter, swiped, isAnswered } =
     useAnswerSurveyScreen(surveyEntity)
 
   return (
@@ -25,7 +25,7 @@ const Component: FC<Props> = ({ surveyEntity }) => {
         contentsLength={surveyEntity.contents.length}
         currentContentIndex={counter}
       />
-      {answeredContents.length === surveyEntity.contents.length ? (
+      {isAnswered ? (
         <OAnswerComplete point={point} />
       ) : (
         <CardSwiper surveyQuestions={surveyEntity.contents} onSwiped={swiped} />

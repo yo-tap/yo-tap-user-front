@@ -40,7 +40,7 @@ export const useAnswerSurveyScreen = (surveyEntity: SurveyEntity) => {
       const userCredential = await signInAnonymously(auth)
       const jwt = await userCredential.user.getIdToken()
 
-      const isAlreadyAnswered = await fetch(
+      const response = await fetch(
         `/api/surveys/${surveyEntity.uniqueKey}/answers`,
         {
           method: 'GET',
@@ -51,9 +51,41 @@ export const useAnswerSurveyScreen = (surveyEntity: SurveyEntity) => {
         }
       )
 
-      if (isAlreadyAnswered.status === 200) setIsAnswered(true)
+      const answerEntity = await response.json()
+
+      if (response.status === 200) {
+        setIsAnswered(true)
+        setPoint(answerEntity.points)
+      }
     })()
   }, [])
+
+  useEffect(() => {
+    console.log('counter:', counter)
+    if (counter >= surveyEntity.contents.length) {
+      sendAnsweredContents()
+      setIsAnswered(true)
+    }
+  }, [counter])
+
+  const sendAnsweredContents = useCallback(async () => {
+    const userCredential = await signInAnonymously(auth)
+    const jwt = await userCredential.user.getIdToken()
+
+    await fetch(`/api/surveys/${surveyEntity.uniqueKey}/answers`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwt}`,
+      },
+      body: JSON.stringify({
+        contents: answeredContents,
+        points: answeredContents
+          .map((content) => content.point)
+          .reduce((acc, cur) => acc + cur, 0),
+      }),
+    })
+  }, [answeredContents, surveyEntity])
 
   const swiped = useCallback(
     (swiper: any) => {
