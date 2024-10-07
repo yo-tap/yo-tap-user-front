@@ -33,7 +33,7 @@ const Component: FC<ShareProps> = ({ share, doneSh }) => {
         onClick={async () => {
           await share()
           window.open(
-            'twitter://post?message=%E3%83%9D%E3%82%A4%E6%B4%BB%E3%82%A2%E3%83%B3%E3%82%B1%E3%83%BC%E3%83%88%E3%82%A2%E3%83%97%E3%83%AA%20%23YoTap%20https://yotap.vercel.app/surveys/test-ja'
+            'twitter://post?message=%E3%83%9D%E3%82%A4%E6%B4%BB%E3%82%A2%E3%83%B3%E3%82%B1%E3%83%BC%E3%83%88%E3%82%A2%E3%83%97%E3%83%AA(%E5%AE%9F%E9%A8%93%E4%B8%AD)%20%23YoTap%20https://yotap.vercel.app/surveys/test-ja'
           )
         }}
         checked={doneSh}
