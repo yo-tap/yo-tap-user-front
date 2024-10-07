@@ -7,7 +7,7 @@ import GoogleAnalyticsV4, {
 import { applicationProperties } from '@/constants/applicationProperties'
 import { mantineTheme } from '@/theme/mantineTheme'
 import { MantineProvider } from '@mantine/core'
-import { PrivyProvider } from '@privy-io/react-auth'
+// import { PrivyProvider } from '@privy-io/react-auth'
 import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react' // Provider imports 'rollbar'
 
 const rollbarConfig = {
@@ -32,7 +32,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
         <GoogleAnalyticsV4
           googleAnalyticsId={googleAnalyticsId as GoogleAnalyticsId}
         />
-        <PrivyProvider
+        {/* <PrivyProvider
           appId={applicationProperties.PRIVY_APP_ID}
           config={{
             // Customize Privy's appearance in your app
@@ -45,9 +45,9 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
               createOnLogin: 'users-without-wallets',
             },
           }}
-        >
-          <MantineProvider theme={mantineTheme}>{children}</MantineProvider>
-        </PrivyProvider>
+        > */}
+        <MantineProvider theme={mantineTheme}>{children}</MantineProvider>
+        {/* </PrivyProvider> */}
       </ErrorBoundary>
     </RollbarProvider>
   )
