@@ -122,16 +122,16 @@ export const useAnswerComplete = (
     [surveyEntity.uniqueKey]
   )
 
-  const getWhitelisted = useCallback(() => {
-    missionComplete(`${surveyEntity.uniqueKey}-gw`, 'getWhitelisted', 212)
+  const getWhitelisted = useCallback(async () => {
+    await missionComplete(`${surveyEntity.uniqueKey}-gw`, 'getWhitelisted', 212)
     setDoneGw(true)
   }, [missionComplete, surveyEntity.uniqueKey])
-  const follow = useCallback(() => {
-    missionComplete(`${surveyEntity.uniqueKey}-fw`, 'follow', 99)
+  const follow = useCallback(async () => {
+    await missionComplete(`${surveyEntity.uniqueKey}-fw`, 'follow', 99)
     setDoneFw(true)
   }, [missionComplete, surveyEntity.uniqueKey])
-  const share = useCallback(() => {
-    missionComplete(`${surveyEntity.uniqueKey}-sh`, 'share', 94)
+  const share = useCallback(async () => {
+    await missionComplete(`${surveyEntity.uniqueKey}-sh`, 'share', 94)
     setDoneSh(true)
   }, [missionComplete, surveyEntity.uniqueKey])
 
