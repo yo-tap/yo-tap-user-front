@@ -148,7 +148,7 @@ const Component: FC<Props> = ({ point, surveyEntity, addPoint }) => {
         onAnimationComplete={() => {}}
       >
         <Flex justify={'center'} mt={16} ta="center">
-          <Box>ご協力ありがとうございました</Box>
+          <Box>Thank you for your cooperation in the test.</Box>
         </Flex>
       </motion.div>
 
@@ -177,8 +177,17 @@ const Component: FC<Props> = ({ point, surveyEntity, addPoint }) => {
           animate={'visible'}
           onAnimationComplete={() => {}}
         >
-          <Box mt={24} c="#F80A07" style={{ textDecoration: 'underline' }}>
-            ご提案・ご意見
+          <Box
+            display="block"
+            component="a"
+            href={`https://docs.google.com/forms/d/e/1FAIpQLSdPXc5PhvkIqeDDX6fd_ebzPRoq1kykEArS1H6PllWcReCIGQ/viewform?usp=sf_link`}
+            mt={24}
+            c="#F80A07"
+            style={{ textDecoration: 'underline' }}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Feedback / Contact
           </Box>
         </motion.div>
       </Flex>
