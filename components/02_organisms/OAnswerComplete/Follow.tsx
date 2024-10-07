@@ -31,8 +31,8 @@ export const Component: FC<FollowProps> = ({ follow, doneFw }) => {
         mt={12}
         checked={doneFw}
         earnablePoint={99}
-        onClick={async () => {
-          await follow()
+        onClick={() => {
+          follow()
           window.open('https://x.com/intent/follow?screen_name=yotap_earn')
         }}
       >
