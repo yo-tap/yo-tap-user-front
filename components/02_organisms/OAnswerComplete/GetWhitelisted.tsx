@@ -102,7 +102,7 @@ export const Component: FC<GetWhitelistedProps> = ({
         animate={'visible'}
       >
         <OActionButton
-          earnablePoint={200}
+          earnablePoint={212}
           onClick={() => {
             open()
           }}

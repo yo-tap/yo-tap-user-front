@@ -29,7 +29,7 @@ const Component: FC<ShareProps> = ({ share, doneSh }) => {
     >
       <OActionButton
         mt={12}
-        earnablePoint={100}
+        earnablePoint={94}
         onClick={share}
         checked={doneSh}
       >

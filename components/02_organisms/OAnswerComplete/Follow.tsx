@@ -30,7 +30,7 @@ export const Component: FC<FollowProps> = ({ follow, doneFw }) => {
       <OActionButton
         mt={12}
         checked={doneFw}
-        earnablePoint={100}
+        earnablePoint={99}
         onClick={follow}
       >
         Follow X
