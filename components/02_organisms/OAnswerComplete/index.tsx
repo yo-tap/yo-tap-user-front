@@ -1,12 +1,14 @@
+import { SurveyEntity } from '@/types/Survey'
 import { fontShrikhand } from '@/utils/fonts'
 import { Box, Flex } from '@mantine/core'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FC } from 'react'
 import { OCounter } from '../OCounter'
-import { OActionButton } from '../OActionButton'
-import { motion } from 'framer-motion'
+import { Follow } from './Follow'
 import { useAnswerComplete } from './hooks'
-import { SurveyEntity } from '@/types/Survey'
+import { Share } from './Share'
+import { GetWhitelisted } from './GetWhitelisted'
 
 type Props = {
   point: number
@@ -15,7 +17,7 @@ type Props = {
 }
 
 const Component: FC<Props> = ({ point, surveyEntity, addPoint }) => {
-  const { getWhitelisted, follow, share, doneGw, doneFw, doneSh } =
+  const { follow, share, doneFw, doneSh, doneGw, getWhitelisted } =
     useAnswerComplete(surveyEntity, addPoint)
 
   return (
@@ -146,96 +148,15 @@ const Component: FC<Props> = ({ point, surveyEntity, addPoint }) => {
         onAnimationComplete={() => {}}
       >
         <Flex justify={'center'} mt={16} ta="center">
-          <Box>
-            Whiteslistに登録で
-            <br />
-            ポイントを保存することができます
-          </Box>
+          <Box>ご協力ありがとうございました</Box>
         </Flex>
       </motion.div>
 
       <Flex direction="column" mt={24} align="center">
         <Box w={358}>
-          <motion.div
-            variants={{
-              hidden: { y: 24, opacity: 0, scale: 1.25 },
-              visible: {
-                y: 0,
-                opacity: 1,
-                scale: 1,
-                transition: {
-                  duration: 0.25,
-                  ease: 'easeOut',
-                  delay: 0.65,
-                },
-              },
-            }}
-            initial="hidden"
-            animate={'visible'}
-            onAnimationComplete={() => {}}
-          >
-            <OActionButton
-              earnablePoint={200}
-              onClick={getWhitelisted}
-              checked={doneGw}
-            >
-              Get whitelisted!
-            </OActionButton>
-          </motion.div>
-          <motion.div
-            variants={{
-              hidden: { y: 24, opacity: 0, scale: 1.25 },
-              visible: {
-                y: 0,
-                opacity: 1,
-                scale: 1,
-                transition: {
-                  duration: 0.25,
-                  ease: 'easeOut',
-                  delay: 0.7,
-                },
-              },
-            }}
-            initial="hidden"
-            animate={'visible'}
-            onAnimationComplete={() => {}}
-          >
-            <OActionButton
-              mt={12}
-              earnablePoint={100}
-              onClick={share}
-              checked={doneSh}
-            >
-              Share Url to X
-            </OActionButton>
-          </motion.div>
-          <motion.div
-            variants={{
-              hidden: { y: 24, opacity: 0, scale: 1.25 },
-              visible: {
-                y: 0,
-                opacity: 1,
-                scale: 1,
-                transition: {
-                  duration: 0.25,
-                  ease: 'easeOut',
-                  delay: 0.75,
-                },
-              },
-            }}
-            initial="hidden"
-            animate={'visible'}
-            onAnimationComplete={() => {}}
-          >
-            <OActionButton
-              mt={12}
-              checked={doneFw}
-              earnablePoint={100}
-              onClick={follow}
-            >
-              Follow X
-            </OActionButton>
-          </motion.div>
+          <GetWhitelisted getWhitelisted={getWhitelisted} doneGw={doneGw} />
+          <Share share={share} doneSh={doneSh} />
+          <Follow follow={follow} doneFw={doneFw} />
         </Box>
 
         <motion.div
