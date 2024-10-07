@@ -6,16 +6,17 @@ import { OContinuousProgress } from '@/components/02_organisms/OContinuousProgre
 import { ONavBar } from '@/components/02_organisms/ONavBar'
 import { CardSwiper } from '@/components/CardSwiper'
 import { SurveyEntity } from '@/types/Survey'
-import { Box } from '@mantine/core'
+import { Box, Flex, Loader } from '@mantine/core'
 import { FC, memo } from 'react'
 import { useAnswerSurveyScreen } from './hooks'
+import { motion } from 'framer-motion'
 
 type Props = {
   surveyEntity: SurveyEntity
 }
 
 const Component: FC<Props> = ({ surveyEntity }) => {
-  const { baloons, point, counter, swiped, isAnswered } =
+  const { baloons, point, counter, swiped, isAnswered, isReady } =
     useAnswerSurveyScreen(surveyEntity)
 
   return (
@@ -25,10 +26,37 @@ const Component: FC<Props> = ({ surveyEntity }) => {
         contentsLength={surveyEntity.contents.length}
         currentContentIndex={counter}
       />
-      {isAnswered ? (
-        <OAnswerComplete point={point} />
+      {isReady ? (
+        <motion.div
+          variants={{
+            hidden: { y: 20, opacity: 0 },
+            visible: {
+              y: 0, //　動く量を多くするために
+              opacity: 1,
+              transition: {
+                duration: 0.6,
+                ease: 'easeOut',
+              },
+            },
+          }}
+          initial="hidden"
+          animate={'visible'}
+        >
+          {isAnswered ? (
+            <OAnswerComplete point={point} />
+          ) : (
+            <CardSwiper
+              surveyQuestions={surveyEntity.contents}
+              onSwiped={swiped}
+            />
+          )}
+        </motion.div>
       ) : (
-        <CardSwiper surveyQuestions={surveyEntity.contents} onSwiped={swiped} />
+        <>
+          <Flex direction="column" align="center" justify="center" h={620}>
+            <Loader color="red" />
+          </Flex>
+        </>
       )}
 
       {baloons.map((baloon) => (

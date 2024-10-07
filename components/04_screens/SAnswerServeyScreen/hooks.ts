@@ -3,6 +3,7 @@ import { AnsweredContent } from '@/types/Answer'
 import { SurveyEntity } from '@/types/Survey'
 import { signInAnonymously } from 'firebase/auth'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { set } from 'zod'
 
 export const useAnswerSurveyScreen = (surveyEntity: SurveyEntity) => {
   const [baloons, setBaloons] = useState<
@@ -18,6 +19,7 @@ export const useAnswerSurveyScreen = (surveyEntity: SurveyEntity) => {
   >([])
   const [point, setPoint] = useState(0)
   const [reviewedAmount, setReviewedAmount] = useState(0)
+  const [isReady, setIsReady] = useState(false)
   const [answeredContents, setAnsweredContents] = useState<AnsweredContent[]>(
     []
   )
@@ -57,6 +59,8 @@ export const useAnswerSurveyScreen = (surveyEntity: SurveyEntity) => {
         setIsAnswered(true)
         setPoint(answerEntity.points)
       }
+
+      setIsReady(true)
     })()
   }, [])
 
@@ -170,5 +174,6 @@ export const useAnswerSurveyScreen = (surveyEntity: SurveyEntity) => {
     swiped,
     answeredContents,
     isAnswered,
+    isReady,
   }
 }
