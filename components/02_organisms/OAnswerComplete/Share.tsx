@@ -30,7 +30,12 @@ const Component: FC<ShareProps> = ({ share, doneSh }) => {
       <OActionButton
         mt={12}
         earnablePoint={94}
-        onClick={share}
+        onClick={() => {
+          share()
+          window.open(
+            'https://x.com/intent/tweet??url=https://yotap.vercel.app/surveys/test-ja&text=%E3%83%9D%E3%82%A4%E6%B4%BB%E3%82%A2%E3%83%B3%E3%82%B1%E3%83%BC%E3%83%88%E3%82%A2%E3%83%97%E3%83%AA%20%23YoTap'
+          )
+        }}
         checked={doneSh}
       >
         Share Url to X
