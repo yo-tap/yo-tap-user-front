@@ -18,6 +18,7 @@ CREATE TABLE "answers" (
     "unique_key" VARCHAR(255) NOT NULL,
     "user_id" INTEGER NOT NULL,
     "survey_id" INTEGER NOT NULL,
+    "points" INTEGER NOT NULL DEFAULT 0,
     "contents" JSONB,
     "updated_at" TIMESTAMP(3) NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -29,6 +30,7 @@ CREATE TABLE "answers" (
 CREATE TABLE "users" (
     "id" SERIAL NOT NULL,
     "unique_key" VARCHAR(255) NOT NULL,
+    "email" VARCHAR(65535),
     "firebase_uid" VARCHAR(255) NOT NULL,
     "updated_at" TIMESTAMP(3) NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,

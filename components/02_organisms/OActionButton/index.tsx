@@ -1,7 +1,6 @@
 import { fontInterItalic, fontShrikhand } from '@/utils/fonts'
 import { Box, Flex, FlexProps, Text } from '@mantine/core'
 import { FC, ReactNode } from 'react'
-import style from './style.module.scss'
 
 type Props = FlexProps & {
   children: ReactNode
@@ -30,9 +29,9 @@ const Component: FC<Props> = ({
           borderRadius: 43,
           border: 'solid 1px #000000',
           boxShadow: '4px 4px 0px rgba(0, 0, 0, 1)',
-          cursor: 'pointer',
+          cursor: checked ? 'default' : 'pointer',
         }}
-        onClick={onClick}
+        onClick={checked ? () => {} : onClick}
         {...props}
       >
         <Flex align="center" justify="center">

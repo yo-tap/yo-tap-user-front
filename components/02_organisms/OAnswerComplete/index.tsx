@@ -5,12 +5,19 @@ import { FC } from 'react'
 import { OCounter } from '../OCounter'
 import { OActionButton } from '../OActionButton'
 import { motion } from 'framer-motion'
+import { useAnswerComplete } from './hooks'
+import { SurveyEntity } from '@/types/Survey'
 
 type Props = {
   point: number
+  surveyEntity: SurveyEntity
+  addPoint: (point: number) => void
 }
 
-const Component: FC<Props> = ({ point }) => {
+const Component: FC<Props> = ({ point, surveyEntity, addPoint }) => {
+  const { getWhitelisted, follow, share, doneGw, doneFw, doneSh } =
+    useAnswerComplete(surveyEntity, addPoint)
+
   return (
     <Box>
       <motion.div
@@ -167,7 +174,11 @@ const Component: FC<Props> = ({ point }) => {
             animate={'visible'}
             onAnimationComplete={() => {}}
           >
-            <OActionButton earnablePoint={2000} onClick={() => {}}>
+            <OActionButton
+              earnablePoint={200}
+              onClick={getWhitelisted}
+              checked={doneGw}
+            >
               Get whitelisted!
             </OActionButton>
           </motion.div>
@@ -189,7 +200,12 @@ const Component: FC<Props> = ({ point }) => {
             animate={'visible'}
             onAnimationComplete={() => {}}
           >
-            <OActionButton mt={12} earnablePoint={200} onClick={() => {}}>
+            <OActionButton
+              mt={12}
+              earnablePoint={100}
+              onClick={share}
+              checked={doneSh}
+            >
               Share Url to X
             </OActionButton>
           </motion.div>
@@ -213,22 +229,13 @@ const Component: FC<Props> = ({ point }) => {
           >
             <OActionButton
               mt={12}
-              checked={true}
-              earnablePoint={20}
-              onClick={() => {}}
+              checked={doneFw}
+              earnablePoint={100}
+              onClick={follow}
             >
               Follow X
             </OActionButton>
           </motion.div>
-
-          {/* {answeredContents.map((answeredContent, index) => {
-        return (
-          <>
-            <div>{answeredContent.surveyTitle}</div>
-            <div key={index}>{answeredContent.answeredLabelString}</div>
-          </>
-        )
-      })} */}
         </Box>
 
         <motion.div
