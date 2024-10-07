@@ -1,0 +1,63 @@
+import { SurveyQuestionEntity } from '@/types/SurveyQuestion'
+
+export const surveyQuestionsMock: SurveyQuestionEntity[] = [
+  {
+    uniqueKey: 'web3_interest_001',
+    title: 'Web3を活用した\nアンケートアプリに\n興味はありますか？',
+    bgImageUrl:
+      'https://hanzochang-sandbox.s3.ap-northeast-1.amazonaws.com/yotap/demo/01.jpg',
+    bgColor: 'rgba(0,0,0,0.6)',
+    layout: '2col',
+    ff: 'notoSansJP',
+    fz: 28,
+    align: 'center',
+    ta: 'center',
+    answerLeft: {
+      label: '⬅️興味ある',
+      justify: 'center',
+      align: 'center',
+      point: 9,
+      pointUpEffectBgColor: '#00FF00',
+      fz: 18,
+      ff: 'notoSansJP',
+      fw: 400,
+    },
+    answerRight: {
+      label: '興味ない➡️',
+      justify: 'center',
+      align: 'center',
+      point: 9,
+      pointUpEffectBgColor: '#FF0000',
+      fz: 18,
+      ff: 'notoSansJP',
+      fw: 400,
+    },
+  },
+  {
+    uniqueKey: 'web3_interest_002',
+    title: 'Are you interested\nin a survey app utilizing Web3?',
+    bgImageUrl:
+      'https://hanzochang-sandbox.s3.ap-northeast-1.amazonaws.com/yotap/demo/02.jpg',
+    bgColor: 'rgba(0,0,0,0.5)',
+    layout: '2col',
+    ff: 'shrikhand',
+    align: 'center',
+    ta: 'center',
+    answerLeft: {
+      label: '興味ある',
+      align: 'center',
+      point: 12,
+      pointUpEffectBgColor: '#00FF00',
+      ff: 'shrikhand',
+      fw: 400,
+    },
+    answerRight: {
+      label: '興味ない',
+      align: 'center',
+      point: 12,
+      pointUpEffectBgColor: '#FF0000',
+      ff: 'shrikhand',
+      fw: 400,
+    },
+  },
+]
