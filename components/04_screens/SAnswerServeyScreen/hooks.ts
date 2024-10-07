@@ -34,8 +34,8 @@ export const useAnswerSurveyScreen = (surveyEntity: SurveyEntity) => {
   useEffect(() => {
     ;(async () => {
       // setup sound
-      // likedSoundRef.current = new Audio('/assets/sounds/liked.mp3')
-      // noopsSoundRef.current = new Audio('/assets/sounds/noops2.wav')
+      likedSoundRef.current = new Audio('/assets/sounds/liked.mp3')
+      noopsSoundRef.current = new Audio('/assets/sounds/noops2.wav')
 
       // sign in anonymously
       const userCredential = await signInAnonymously(auth)
