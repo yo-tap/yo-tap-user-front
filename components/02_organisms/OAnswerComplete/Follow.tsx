@@ -33,7 +33,7 @@ export const Component: FC<FollowProps> = ({ follow, doneFw }) => {
         earnablePoint={99}
         onClick={async () => {
           await follow()
-          window.open('x://user?screen_name=yotap_earn')
+          window.open('twitter://user?screen_name=yotap_earn')
         }}
       >
         Follow X
